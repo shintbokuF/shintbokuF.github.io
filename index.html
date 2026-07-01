@@ -5,60 +5,250 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>卜 新哲 | Boku Shintetsu</title>
   <meta name="description" content="Personal homepage of Boku Shintetsu (卜 新哲)." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #f3efe7;   /* warm off-white  */
+      --bg-2:      #efe9df;
+      --surface:   #faf7f1;
+      --ink:       #262420;   /* near-black warm */
+      --muted:     #6d675d;   /* warm grey text  */
+      --line:      #e0d8cb;
+
+      --primary:   #2f4a3f;   /* deep slate green */
+      --primary-2: #24382f;
+      --accent:    #b0824f;   /* copper / brass   */
+      --accent-2:  #9c5c4d;   /* muted terracotta */
+
+      --radius:    999px;
+      --shadow-sm: 0 2px 10px rgba(38, 36, 32, 0.06);
+      --shadow-md: 0 18px 50px rgba(38, 36, 32, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Noto Sans JP", -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 520px at 82% -8%,  rgba(176,130,79,0.14), transparent 60%),
+        radial-gradient(760px 520px at -6% 108%, rgba(47,74,63,0.14),  transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      background-attachment: fixed;
+      min-height: 100vh;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- Nav ---------- */
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(243, 239, 231, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      max-width: 1080px; margin: 0 auto;
+      padding: 18px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700; font-size: 20px; letter-spacing: 2px;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .brand .en {
+      font-family: "Playfair Display", serif;
+      font-size: 13px; font-style: italic; letter-spacing: .5px;
+      color: var(--muted);
+    }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      position: relative;
+      font-size: 14px; font-weight: 500; letter-spacing: 1px;
+      color: var(--ink); text-decoration: none;
+      padding: 4px 0;
+      transition: color .25s;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 1.5px; background: var(--accent);
+      transition: width .28s ease;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.ext { color: var(--accent); font-weight: 700; }
+    .nav-links a.ext::after { background: var(--accent); }
+    .nav-links a.ext:hover { color: var(--accent-2); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      max-width: 1080px; margin: 0 auto;
+      padding: clamp(48px, 9vw, 110px) 28px;
+      display: grid;
+      grid-template-columns: minmax(220px, 340px) 1fr;
+      gap: clamp(36px, 6vw, 88px);
+      align-items: center;
+    }
+
+    .portrait-wrap { display: flex; justify-content: center; }
+    .portrait {
+      position: relative;
+      width: min(300px, 72vw); aspect-ratio: 1;
+    }
+    .portrait::before {
+      content: ""; position: absolute; inset: -14px;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, var(--primary), var(--accent), var(--accent-2), var(--primary));
+      opacity: .18; filter: blur(6px);
+    }
+    .portrait img {
+      position: relative;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 20%;
+      border-radius: 50%;
+      border: 5px solid var(--surface);
+      box-shadow: var(--shadow-md);
+    }
+
+    .intro .eyebrow {
+      font-family: "Playfair Display", serif;
+      font-style: italic; font-size: 17px; color: var(--accent);
+      letter-spacing: .5px; margin-bottom: 6px;
+    }
+    .intro h1 {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: clamp(40px, 7vw, 68px);
+      line-height: 1.1; letter-spacing: 1px;
+      color: var(--ink);
+    }
+    .intro h1 .name { color: var(--primary); }
+
+    .about-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin: 30px 0 12px;
+      font-size: 13px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .about-label::before {
+      content: ""; width: 26px; height: 2px; background: var(--accent);
+    }
+    .about-text { max-width: 46ch; color: var(--muted); font-size: 16px; }
+    .about-text .en { display: block; margin-top: 10px; font-size: 14px; color: #8a8478; }
+
+    .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px;
+      border-radius: var(--radius);
+      font-size: 14px; font-weight: 700; letter-spacing: 1px;
+      text-decoration: none; cursor: pointer;
+      transition: transform .2s ease, box-shadow .25s ease, background .25s, color .25s;
+    }
+    .btn-primary {
+      background: var(--primary); color: #f4efe4;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover {
+      background: var(--primary-2);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 26px rgba(47, 74, 63, .32);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+    .btn-ghost:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: rgba(47, 74, 63, .06);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-accent {
+      background: transparent; color: var(--accent-2);
+      border: 1.5px solid var(--accent-2);
+    }
+    .btn-accent:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: rgba(156, 92, 77, .07);
+      box-shadow: var(--shadow-sm);
+    }
+
+    footer {
+      max-width: 1080px; margin: 0 auto;
+      padding: 24px 28px 40px;
+      font-size: 13px; color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 760px) {
+      .nav { padding: 14px 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links a { font-size: 13px; }
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 56px;
+      }
+      .about-label { justify-content: center; }
+      .about-text { margin: 0 auto; }
+      .cta { justify-content: center; }
+    }
+  </style>
 </head>
 <body>
-  <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-
-  <main class="card">
-    <img class="avatar" src="avatar.jpg" alt="卜 新哲" />
-
-    <h1>卜 新哲</h1>
-    <p class="subtitle">Boku Shintetsu ・ ぼく しんてつ</p>
-
-    <p class="tagline" lang="ja">
-      クラウドと AI で、少しだけ未来を前倒しする。
-    </p>
-    <p class="tagline-en" lang="en">
-      Building with the cloud and AI — bringing the future a little closer.
-    </p>
-
-    <ul class="skills">
-      <li>Azure</li>
-      <li>AI / LLM</li>
-      <li>Python</li>
-      <li>Cloud Architecture</li>
-    </ul>
-
-    <nav class="links">
-      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#top">卜 新哲 <span class="en">Boku Shintetsu</span></a>
+      <div class="nav-links">
+        <a href="#experience">経歴</a>
+        <a href="#projects">プロジェクト</a>
+        <a href="#contact">連絡先</a>
+        <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener" class="ext">researchmap ↗</a>
+      </div>
     </nav>
+  </header>
 
-    <footer>
-      <span id="year"></span> ・ Built with ❤ on GitHub Pages
-    </footer>
+  <main class="hero" id="top">
+    <div class="portrait-wrap">
+      <div class="portrait">
+        <img src="avatar.jpg" alt="卜 新哲" />
+      </div>
+    </div>
+
+    <section class="intro">
+      <p class="eyebrow">Hello, nice to meet you.</p>
+      <h1>はじめまして、<br><span class="name">卜 新哲</span> です。</h1>
+
+      <p class="about-label">自己紹介 / About</p>
+      <p class="about-text">
+        クラウドと AI を軸に、仕組みづくりからプロトタイプの実装までを手がけています。
+        <span class="en">I work across cloud and AI — from shaping systems to building working prototypes.</span>
+      </p>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="#experience">経歴を見る</a>
+        <a class="btn btn-ghost"   href="#projects">プロジェクト</a>
+        <a class="btn btn-accent"  href="#contact">連絡先</a>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <span id="year"></span> · Boku Shintetsu · Built on GitHub Pages
+  </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    const toggle = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-    const saved = localStorage.getItem('theme');
-    if (saved) root.setAttribute('data-theme', saved);
-    updateIcon();
-
-    toggle.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      updateIcon();
-    });
-
-    function updateIcon() {
-      toggle.textContent = root.getAttribute('data-theme') === 'light' ? '🌙' : '☀️';
-    }
   </script>
 </body>
 </html>
