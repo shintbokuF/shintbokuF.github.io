@@ -86,13 +86,13 @@
       max-width: 1080px; margin: 0 auto;
       padding: clamp(44px, 8vw, 96px) 28px;
       display: grid;
-      grid-template-columns: auto minmax(0, 620px);
+      grid-template-columns: auto minmax(0, 560px);
       justify-content: center;
       gap: clamp(36px, 6vw, 84px);
       align-items: center;
     }
-    .portrait-wrap { display: flex; justify-content: center; }
-    .portrait { position: relative; width: min(210px, 56vw); aspect-ratio: 1; }
+    .portrait-wrap { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+    .portrait { position: relative; flex: none; width: min(210px, 56vw); height: min(210px, 56vw); aspect-ratio: 1; }
     .portrait::before {
       content: ""; position: absolute; inset: -10px; border-radius: 50%;
       background: var(--primary);
@@ -127,6 +127,20 @@
     .about-text { max-width: 100%; color: var(--muted); font-size: 16px; }
     .about-text .line { display: block; margin-top: 8px; }
     .about-text .en { display: block; margin-top: 12px; font-size: 14px; color: var(--faint); }
+
+    .pillars { display: flex; gap: 14px; }
+    .pillar {
+      width: 84px; height: 84px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+      color: #fff; font-weight: 700; font-size: 13px; letter-spacing: .5px;
+      box-shadow: 0 8px 20px rgba(38,36,32,.16);
+      transition: transform .2s ease, box-shadow .25s ease, filter .2s ease;
+    }
+    .pillar .iconify { font-size: 19px; }
+    .pillar:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(38,36,32,.22); filter: brightness(1.05); }
+    .pillar.ai    { background: #c07a37; }
+    .pillar.soc   { background: #a5514a; }
+    .pillar.cloud { background: #4e6f8f; }
 
     .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
     .btn {
@@ -278,6 +292,7 @@
       .about-label { justify-content: center; }
       .about-text { margin: 0 auto; }
       .cta { justify-content: center; }
+      .pillars { justify-content: center; flex-wrap: wrap; }
       .hobbies { grid-template-columns: 1fr; }
     }
   </style>
@@ -302,6 +317,11 @@
   <main class="hero" id="top">
     <div class="portrait-wrap">
       <div class="portrait"><img src="avatar.jpg" alt="Victor / 卜 新哲" /></div>
+      <div class="pillars">
+        <div class="pillar ai"><span class="iconify" data-icon="lucide:sparkles"></span>AI</div>
+        <div class="pillar soc"><span class="iconify" data-icon="lucide:users"></span>社会学</div>
+        <div class="pillar cloud"><span class="iconify" data-icon="lucide:cloud"></span>Cloud</div>
+      </div>
     </div>
     <section class="intro">
       <p class="eyebrow">Hello, I'm</p>
@@ -314,7 +334,6 @@
         <span class="line">研究では社会学の視点から、労働と格差の問題を探っています。</span>
         <span class="en">Cloud &amp; AI engineer by day, sociology researcher by trade — building systems and studying how work shapes inequality.</span>
       </p>
-
     </section>
   </main>
 
