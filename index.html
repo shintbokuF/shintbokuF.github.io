@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>卜 新哲 · 个人主页</title>
+  <meta name="description" content="卜 新哲 (Boku Shintetsu) 的个人主页" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="theme-toggle" aria-label="切换主题">🌙</button>
+
+  <main class="card">
+    <div class="avatar" aria-hidden="true">卜</div>
+
+    <h1>卜 新哲</h1>
+    <p class="subtitle">Boku Shintetsu · ぼく しんてつ</p>
+
+    <p class="tagline">
+      在这里写一句你想让别人记住的话 —— 你的角色、方向或态度。
+    </p>
+
+    <ul class="skills">
+      <li>Azure</li>
+      <li>AI / LLM</li>
+      <li>Python</li>
+      <li>云架构</li>
+    </ul>
+
+    <nav class="links">
+      <a href="https://github.com/buxinzhe93-cmd" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:你的邮箱@example.com">Email</a>
+    </nav>
+
+    <footer>
+      <span id="year"></span> · Built with ❤ on GitHub Pages
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    updateIcon();
+
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon();
+    });
+
+    function updateIcon() {
+      toggle.textContent = root.getAttribute('data-theme') === 'light' ? '🌙' : '☀️';
+    }
+  </script>
+</body>
+</html>
