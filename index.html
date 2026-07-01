@@ -178,6 +178,12 @@
     .tl-item .date { font-size: 13px; color: var(--faint); letter-spacing: 1px; margin-top: 2px; }
     .tl-item p { color: var(--muted); font-size: 15px; margin-top: 8px; max-width: 60ch; }
     .tl-item .tag { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--accent-2); }
+    .tl-list { list-style: none; margin-top: 10px; display: grid; gap: 7px; max-width: 60ch; }
+    .tl-list li { position: relative; padding-left: 18px; color: var(--muted); font-size: 15px; }
+    .tl-list li::before {
+      content: ""; position: absolute; left: 1px; top: 9px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    }
 
     /* Skills */
     .skill-group + .skill-group { margin-top: 30px; }
@@ -220,10 +226,11 @@
     .cert-row:first-child { padding-top: 0; }
     .cert-row:last-child { border-bottom: none; }
     .cert-row .mark {
-      flex: none; width: 32px; height: 32px; border-radius: 8px;
-      display: grid; place-items: center; font-size: 19px;
+      flex: none; width: 32px; height: 32px; border-radius: 8px; padding: 4px;
+      display: grid; place-items: center; font-size: 19px; overflow: hidden;
       background: #fff; border: 1px solid var(--line);
     }
+    .cert-row .mark img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .cert-row.lang .mark { background: rgba(176,130,79,.12); border-color: rgba(176,130,79,.22); color: var(--accent); font-size: 17px; }
     .cert-row h3 { font-size: 16px; font-weight: 700; color: var(--ink); }
     .cert-row .issuer { font-size: 13px; color: var(--faint); letter-spacing: .5px; margin-top: 2px; }
@@ -278,7 +285,7 @@
 <body>
   <header>
     <nav class="nav">
-      <a class="brand" href="#top">Victor</a>
+      <a class="brand" href="#top">Victor Bu</a>
       <div class="nav-links">
         <a href="#experience">経歴</a>
         <a href="#skills">スキル</a>
@@ -286,6 +293,7 @@
         <a href="#hobbies">趣味</a>
         <a href="#contact">連絡先</a>
         <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener" class="ext">researchmap ↗</a>
+        <a href="https://zenn.dev/snboku" target="_blank" rel="noopener" class="ext">Zenn ↗</a>
       </div>
     </nav>
   </header>
@@ -297,8 +305,8 @@
     </div>
     <section class="intro">
       <p class="eyebrow">Hello, I'm</p>
-      <h1>Victor</h1>
-      <p class="subname">卜 新哲 <small>・ ぼく しんてつ / Boku Shintetsu</small></p>
+      <h1>Victor Bu</h1>
+      <p class="subname">卜 新哲 <small>・ ぼく しんてつ / Bu (Boku) Shintetsu</small></p>
 
       <p class="about-label">自己紹介 / About</p>
       <p class="about-text">
@@ -328,18 +336,18 @@
           <div class="tl-item">
             <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/University_of_Tokyo_symbol.svg/250px-University_of_Tokyo_symbol.svg.png" alt="The University of Tokyo" loading="lazy" />
             <div class="tl-body">
-              <h3>東京大学大学院　学際情報学府</h3>
-              <p class="role">博士課程</p>
-              <p class="date">2025.4 – 現在</p>
+              <h3>The University of Tokyo</h3>
+              <p class="role">Ph.D. Program · Graduate School of Interdisciplinary Information Studies</p>
+              <p class="date">2025.4 – Present</p>
             </div>
           </div>
           <div class="tl-item">
             <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/University_of_Tokyo_symbol.svg/250px-University_of_Tokyo_symbol.svg.png" alt="The University of Tokyo" loading="lazy" />
             <div class="tl-body">
-              <h3>東京大学大学院　学際情報学府</h3>
-              <p class="role">修士課程</p>
+              <h3>The University of Tokyo</h3>
+              <p class="role">Master's Program · Graduate School of Interdisciplinary Information Studies</p>
               <p class="date">2023.4 – 2025.3</p>
-              <p class="tag">研究分野：社会学 / 労働研究 / 格差問題</p>
+              <p class="tag">Research: Sociology / Labor Studies / Social Inequality</p>
             </div>
           </div>
         </div>
@@ -351,8 +359,13 @@
             <div class="tl-body">
               <h3>Sojitz Tech-Innovation Co., Ltd.</h3>
               <p class="role">AI Cloud Solution Engineer</p>
-              <p class="date">2025.4 – 現在</p>
-              <p>Azure を中心とした生成AI・AIエージェントのソリューション設計に従事。</p>
+              <p class="date">2025.4 – Present</p>
+              <p>Azure を中心に、生成 AI・AI エージェントのソリューション設計から実装までを担当。</p>
+              <ul class="tl-list">
+                <li>SIer 向け AI システムの構築</li>
+                <li>商社向け AI システムの構築、および AI エージェントの開発・導入</li>
+                <li>最新の AI ワークフロー基盤の構築</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -371,6 +384,7 @@
         <h3>専門スキル / Technical</h3>
         <div class="pills">
           <span class="pill"><span class="iconify" data-icon="logos:microsoft-azure"></span>Azure</span>
+          <span class="pill"><span class="iconify" data-icon="logos:microsoft-icon"></span>Microsoft Foundry</span>
           <span class="pill"><span class="iconify" data-icon="lucide:sparkles"></span>Generative AI</span>
           <span class="pill"><span class="iconify" data-icon="lucide:bot"></span>AI Agent</span>
           <span class="pill"><span class="iconify" data-icon="lucide:workflow"></span>Workflow Automation</span>
@@ -404,12 +418,12 @@
           <span class="mark"><span class="iconify" data-icon="logos:microsoft-azure"></span></span>
           <div><h3>Microsoft Certified: Azure AI Fundamentals</h3><p class="issuer">Microsoft</p></div>
         </li>
-        <li class="cert-row lang">
-          <span class="mark"><span class="iconify" data-icon="lucide:award"></span></span>
+        <li class="cert-row">
+          <span class="mark"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Japanese-Language_Proficiency_Test_logo.svg/250px-Japanese-Language_Proficiency_Test_logo.svg.png" alt="JLPT" loading="lazy" /></span>
           <div><h3>日本語能力試験 N1</h3><p class="issuer">JLPT</p></div>
         </li>
-        <li class="cert-row lang">
-          <span class="mark"><span class="iconify" data-icon="lucide:award"></span></span>
+        <li class="cert-row">
+          <span class="mark"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/TOEIC_logo.png/250px-TOEIC_logo.png" alt="TOEIC" loading="lazy" /></span>
           <div><h3>TOEIC 810点</h3><p class="issuer">English</p></div>
         </li>
       </ul>
