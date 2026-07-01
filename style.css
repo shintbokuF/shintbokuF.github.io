@@ -67,7 +67,8 @@ h1 { font-size: 32px; letter-spacing: 1px; }
 
 .subtitle { margin-top: 6px; color: var(--muted); font-size: 15px; }
 
-.tagline { margin: 24px 0; line-height: 1.7; color: var(--text); }
+.tagline { margin: 24px 0 6px; line-height: 1.7; color: var(--text); font-size: 17px; }
+.tagline-en { margin: 0 0 24px; line-height: 1.6; color: var(--muted); font-size: 14px; font-style: italic; }
 
 .skills {
   list-style: none;
