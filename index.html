@@ -9,16 +9,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
 
   <style>
     :root {
-      --bg:        #f3efe7;
-      --bg-2:      #efe9df;
-      --surface:   #faf7f1;
-      --ink:       #262420;
-      --muted:     #6d675d;
-      --faint:     #8a8478;
-      --line:      #e0d8cb;
+      --bg:        #eef0ee;
+      --bg-2:      #eef0ee;
+      --surface:   #ffffff;
+      --ink:       #1e211f;
+      --muted:     #5c625d;
+      --faint:     #888e88;
+      --line:      #e0e3e0;
 
       --primary:   #2f4a3f;   /* deep slate green */
       --primary-2: #24382f;
@@ -36,11 +37,7 @@
     body {
       font-family: "Noto Sans JP", -apple-system, "Segoe UI", sans-serif;
       color: var(--ink);
-      background:
-        radial-gradient(900px 520px at 82% -8%,  rgba(176,130,79,0.14), transparent 60%),
-        radial-gradient(760px 520px at -6% 108%, rgba(47,74,63,0.14),  transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
-      background-attachment: fixed;
+      background: var(--bg);
       min-height: 100vh;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
@@ -52,7 +49,7 @@
     header {
       position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(243, 239, 231, 0.72);
+      background: rgba(238, 240, 238, 0.8);
       border-bottom: 1px solid var(--line);
     }
     .nav {
@@ -89,16 +86,17 @@
       max-width: 1080px; margin: 0 auto;
       padding: clamp(44px, 8vw, 96px) 28px;
       display: grid;
-      grid-template-columns: minmax(160px, 240px) 1fr;
-      gap: clamp(32px, 6vw, 80px);
+      grid-template-columns: auto minmax(0, 560px);
+      justify-content: center;
+      gap: clamp(36px, 6vw, 84px);
       align-items: center;
     }
     .portrait-wrap { display: flex; justify-content: center; }
     .portrait { position: relative; width: min(210px, 56vw); aspect-ratio: 1; }
     .portrait::before {
-      content: ""; position: absolute; inset: -12px; border-radius: 50%;
-      background: conic-gradient(from 210deg, var(--primary), var(--accent), var(--accent-2), var(--primary));
-      opacity: .16; filter: blur(6px);
+      content: ""; position: absolute; inset: -10px; border-radius: 50%;
+      background: var(--primary);
+      opacity: .10; filter: blur(4px);
     }
     .portrait img {
       position: relative; width: 100%; height: 100%;
@@ -127,7 +125,8 @@
     }
     .about-label::before { content: ""; width: 26px; height: 2px; background: var(--accent); }
     .about-text { max-width: 46ch; color: var(--muted); font-size: 16px; }
-    .about-text .en { display: block; margin-top: 10px; font-size: 14px; color: var(--faint); }
+    .about-text .line { display: block; margin-top: 8px; }
+    .about-text .en { display: block; margin-top: 12px; font-size: 14px; color: var(--faint); }
 
     .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
     .btn {
@@ -145,7 +144,7 @@
 
     /* ---------- Sections ---------- */
     section.block { padding: clamp(48px, 8vw, 88px) 0; scroll-margin-top: 80px; }
-    section.block:nth-of-type(even) { background: rgba(250, 247, 241, 0.5); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    section.block:nth-of-type(even) { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .sec-head { margin-bottom: 40px; }
     .sec-head .eyebrow {
       font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent);
@@ -160,14 +159,20 @@
     .tl-group + .tl-group { margin-top: 4px; }
     .tl-kicker { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--accent); margin-bottom: 14px; }
     .tl-item {
-      position: relative; padding-left: 26px; padding-bottom: 22px;
-      border-left: 2px solid var(--line);
+      position: relative; padding: 0 0 26px 44px;
     }
     .tl-item:last-child { padding-bottom: 0; }
     .tl-item::before {
-      content: ""; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px;
-      border-radius: 50%; background: var(--primary); border: 2px solid var(--bg);
+      content: ""; position: absolute; left: 15px; top: 6px; bottom: 0;
+      width: 2px; background: var(--line);
     }
+    .tl-logo {
+      position: absolute; left: 0; top: 2px; z-index: 1;
+      width: 32px; height: 32px; border-radius: 8px;
+      object-fit: contain; padding: 5px;
+      background: #fff; border: 1px solid var(--line);
+    }
+    .tl-body { padding-top: 2px; }
     .tl-item h3 { font-size: 17px; font-weight: 700; color: var(--ink); }
     .tl-item .role { color: var(--primary); font-weight: 700; font-size: 15px; margin-top: 2px; }
     .tl-item .date { font-size: 13px; color: var(--faint); letter-spacing: 1px; margin-top: 2px; }
@@ -183,22 +188,45 @@
     .skill-group h3::before { content: ""; width: 22px; height: 2px; background: var(--accent); }
     .pills { display: flex; flex-wrap: wrap; gap: 10px; }
     .pill {
-      padding: 8px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
       background: rgba(47,74,63,.07); color: var(--primary); border: 1px solid rgba(47,74,63,.14);
     }
+    .pill .iconify { font-size: 17px; }
     .skill-group.domain .pill { background: rgba(176,130,79,.10); color: var(--accent); border-color: rgba(176,130,79,.22); }
 
     /* Hobbies */
-    .hobbies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .hobby {
-      background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
-      padding: 22px 24px; box-shadow: var(--shadow-sm);
-      transition: transform .2s ease, box-shadow .25s ease;
+    .hobby-list { max-width: 680px; }
+    .hobby-row {
+      display: flex; gap: 18px; align-items: center;
+      padding: 18px 0; border-bottom: 1px solid var(--line);
     }
-    .hobby:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-    .hobby .emoji { font-size: 26px; }
-    .hobby h3 { font-size: 16px; font-weight: 700; margin: 8px 0 4px; color: var(--ink); }
-    .hobby p { font-size: 14px; color: var(--muted); }
+    .hobby-row:first-child { padding-top: 0; }
+    .hobby-row:last-child { border-bottom: none; }
+    .hobby-row .ico {
+      flex: none; width: 40px; height: 40px; border-radius: 10px;
+      display: grid; place-items: center; font-size: 21px;
+      background: rgba(47,74,63,.07); color: var(--primary);
+    }
+    .hobby-row h3 { font-size: 16px; font-weight: 700; color: var(--ink); }
+    .hobby-row p { font-size: 14px; color: var(--muted); margin-top: 2px; }
+
+    /* Certifications */
+    .cert-list { max-width: 720px; list-style: none; }
+    .cert-row {
+      display: flex; gap: 18px; align-items: center;
+      padding: 18px 0; border-bottom: 1px solid var(--line);
+    }
+    .cert-row:first-child { padding-top: 0; }
+    .cert-row:last-child { border-bottom: none; }
+    .cert-row .mark {
+      flex: none; width: 32px; height: 32px; border-radius: 8px;
+      display: grid; place-items: center; font-size: 19px;
+      background: #fff; border: 1px solid var(--line);
+    }
+    .cert-row.lang .mark { background: rgba(176,130,79,.12); border-color: rgba(176,130,79,.22); color: var(--accent); font-size: 17px; }
+    .cert-row h3 { font-size: 16px; font-weight: 700; color: var(--ink); }
+    .cert-row .issuer { font-size: 13px; color: var(--faint); letter-spacing: .5px; margin-top: 2px; }
 
     /* Contact */
     .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
@@ -250,10 +278,11 @@
 <body>
   <header>
     <nav class="nav">
-      <a class="brand" href="#top">Victor <span class="jp">卜 新哲</span></a>
+      <a class="brand" href="#top">Victor</a>
       <div class="nav-links">
         <a href="#experience">経歴</a>
         <a href="#skills">スキル</a>
+        <a href="#certs">資格</a>
         <a href="#hobbies">趣味</a>
         <a href="#contact">連絡先</a>
         <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener" class="ext">researchmap ↗</a>
@@ -274,7 +303,7 @@
       <p class="about-label">自己紹介 / About</p>
       <p class="about-text">
         クラウドと AI を軸に、仕組みづくりからプロトタイプの実装までを手がけています。
-        研究では社会学の視点から労働と格差の問題を探っています。
+        <span class="line">研究では社会学の視点から、労働と格差の問題を探っています。</span>
         <span class="en">Cloud &amp; AI engineer by day, sociology researcher by trade — building systems and studying how work shapes inequality.</span>
       </p>
 
@@ -297,25 +326,34 @@
         <div class="tl-group">
           <p class="tl-kicker">学歴 / Education</p>
           <div class="tl-item">
-            <h3>東京大学大学院　学際情報学府</h3>
-            <p class="role">博士課程</p>
-            <p class="date">2025.4 – 現在</p>
+            <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/University_of_Tokyo_symbol.svg/250px-University_of_Tokyo_symbol.svg.png" alt="The University of Tokyo" loading="lazy" />
+            <div class="tl-body">
+              <h3>東京大学大学院　学際情報学府</h3>
+              <p class="role">博士課程</p>
+              <p class="date">2025.4 – 現在</p>
+            </div>
           </div>
           <div class="tl-item">
-            <h3>東京大学大学院　学際情報学府</h3>
-            <p class="role">修士課程</p>
-            <p class="date">2023.4 – 2025.3</p>
-            <p class="tag">研究分野：社会学 / 労働研究 / 格差問題</p>
+            <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/University_of_Tokyo_symbol.svg/250px-University_of_Tokyo_symbol.svg.png" alt="The University of Tokyo" loading="lazy" />
+            <div class="tl-body">
+              <h3>東京大学大学院　学際情報学府</h3>
+              <p class="role">修士課程</p>
+              <p class="date">2023.4 – 2025.3</p>
+              <p class="tag">研究分野：社会学 / 労働研究 / 格差問題</p>
+            </div>
           </div>
         </div>
 
         <div class="tl-group">
           <p class="tl-kicker">職歴 / Work</p>
           <div class="tl-item">
-            <h3>Sojitz Tech-Innovation Co., Ltd.</h3>
-            <p class="role">AI Cloud Solution Engineer</p>
-            <p class="date">2025.4 – 現在</p>
-            <p>Azure を中心とした生成AI・AIエージェントのソリューション設計に従事。</p>
+            <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Sojitz_logo.svg/250px-Sojitz_logo.svg.png" alt="Sojitz Tech-Innovation" loading="lazy" />
+            <div class="tl-body">
+              <h3>Sojitz Tech-Innovation Co., Ltd.</h3>
+              <p class="role">AI Cloud Solution Engineer</p>
+              <p class="date">2025.4 – 現在</p>
+              <p>Azure を中心とした生成AI・AIエージェントのソリューション設計に従事。</p>
+            </div>
           </div>
         </div>
       </div>
@@ -332,21 +370,49 @@
       <div class="skill-group">
         <h3>専門スキル / Technical</h3>
         <div class="pills">
-          <span class="pill">Azure</span>
-          <span class="pill">Generative AI</span>
-          <span class="pill">AI Agent</span>
-          <span class="pill">Workflow Automation</span>
-          <span class="pill">LLM</span>
+          <span class="pill"><span class="iconify" data-icon="logos:microsoft-azure"></span>Azure</span>
+          <span class="pill"><span class="iconify" data-icon="lucide:sparkles"></span>Generative AI</span>
+          <span class="pill"><span class="iconify" data-icon="lucide:bot"></span>AI Agent</span>
+          <span class="pill"><span class="iconify" data-icon="lucide:workflow"></span>Workflow Automation</span>
+          <span class="pill"><span class="iconify" data-icon="lucide:brain-circuit"></span>LLM</span>
         </div>
       </div>
       <div class="skill-group domain">
         <h3>領域知識 / Domain</h3>
         <div class="pills">
-          <span class="pill">社会学</span>
-          <span class="pill">労働研究</span>
-          <span class="pill">格差問題</span>
+          <span class="pill"><span class="iconify" data-icon="lucide:users"></span>社会学</span>
+          <span class="pill"><span class="iconify" data-icon="lucide:briefcase"></span>労働研究</span>
+          <span class="pill"><span class="iconify" data-icon="lucide:scale"></span>格差問題</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="block" id="certs">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Certifications</p>
+        <h2>資格</h2>
+      </div>
+      <ul class="cert-list">
+        <li class="cert-row">
+          <span class="mark"><span class="iconify" data-icon="logos:microsoft-azure"></span></span>
+          <div><h3>Microsoft Certified: Azure Solutions Architect Expert</h3><p class="issuer">Microsoft</p></div>
+        </li>
+        <li class="cert-row">
+          <span class="mark"><span class="iconify" data-icon="logos:microsoft-azure"></span></span>
+          <div><h3>Microsoft Certified: Azure AI Fundamentals</h3><p class="issuer">Microsoft</p></div>
+        </li>
+        <li class="cert-row lang">
+          <span class="mark"><span class="iconify" data-icon="lucide:award"></span></span>
+          <div><h3>日本語能力試験 N1</h3><p class="issuer">JLPT</p></div>
+        </li>
+        <li class="cert-row lang">
+          <span class="mark"><span class="iconify" data-icon="lucide:award"></span></span>
+          <div><h3>TOEIC 810点</h3><p class="issuer">English</p></div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -357,26 +423,22 @@
         <p class="eyebrow">Off the clock</p>
         <h2>趣味</h2>
       </div>
-      <div class="hobbies">
-        <div class="hobby">
-          <div class="emoji">🍉</div>
-          <h3>スイカを食べること</h3>
-          <p>夏の定番、暑い日はこれに限る。</p>
+      <div class="hobby-list">
+        <div class="hobby-row">
+          <span class="ico"><span class="iconify" data-icon="game-icons:watermelon"></span></span>
+          <div><h3>スイカを食べること</h3><p>夏の定番、暑い日はこれに限る。</p></div>
         </div>
-        <div class="hobby">
-          <div class="emoji">🚶</div>
-          <h3>シティウォーク</h3>
-          <p>目的を決めずに街を歩いて発見を楽しむ。</p>
+        <div class="hobby-row">
+          <span class="ico"><span class="iconify" data-icon="lucide:footprints"></span></span>
+          <div><h3>シティウォーク</h3><p>目的を決めずに街を歩いて発見を楽しむ。</p></div>
         </div>
-        <div class="hobby">
-          <div class="emoji">💪</div>
-          <h3>筋トレ</h3>
-          <p>週3回、体づくりも研究と同じくらい継続が大事。</p>
+        <div class="hobby-row">
+          <span class="ico"><span class="iconify" data-icon="lucide:dumbbell"></span></span>
+          <div><h3>筋トレ</h3><p>週3回、体づくりも研究と同じくらい継続が大事。</p></div>
         </div>
-        <div class="hobby">
-          <div class="emoji">🔍</div>
-          <h3>新しい技術を試すこと</h3>
-          <p>気になったツールや AI サービスはすぐ触ってみるタイプ。</p>
+        <div class="hobby-row">
+          <span class="ico"><span class="iconify" data-icon="lucide:flask-conical"></span></span>
+          <div><h3>新しい技術を試すこと</h3><p>気になったツールや AI サービスはすぐ触ってみるタイプ。</p></div>
         </div>
       </div>
     </div>
@@ -391,8 +453,7 @@
       </div>
       <div class="contact-grid">
         <div class="contact-lead">
-          <p>お仕事のご相談、研究に関するお問い合わせ、その他どんなことでもお気軽にどうぞ。フォームからのメッセージは直接メールに届きます。</p>
-          <a class="mail" href="mailto:shintboku@gmail.com">shintboku@gmail.com</a>
+          <p>お仕事のご相談、研究に関するお問い合わせ、その他どんなことでもお気軽にどうぞ。右のフォームから送信いただければ、直接わたし宛てに届きます。</p>
         </div>
         <form class="contact" action="https://formsubmit.co/shintboku@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="【個人HP】新しいメッセージが届きました" />
