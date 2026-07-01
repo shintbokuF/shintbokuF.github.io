@@ -53,13 +53,13 @@ body {
 }
 
 .avatar {
-  width: 96px; height: 96px;
+  width: 112px; height: 112px;
   margin: 0 auto 20px;
-  display: grid; place-items: center;
-  font-size: 42px; font-weight: 700;
-  color: #fff;
+  display: block;
+  object-fit: cover;
+  object-position: center 22%;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7c9cff, #b06cff);
+  border: 3px solid var(--card-border);
   box-shadow: 0 8px 24px rgba(124, 156, 255, 0.4);
 }
 
