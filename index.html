@@ -183,7 +183,14 @@
     .rail-l::before { right: 0;  transform-origin: bottom; }
     .rail-r::before { left: 0;   transform-origin: top; }
 
-    .node { display: flex; align-items: center; }
+    .node { display: flex; align-items: center; text-decoration: none; color: inherit; }
+    /* each node is a shortcut to the section that backs the claim up */
+    .node .k::after {
+      content: " ↓"; color: var(--violet);
+      opacity: 0; transition: opacity .25s ease;
+    }
+    .node:hover .k::after, .node:focus-visible .k::after { opacity: 1; }
+    .node:focus-visible { outline: 2px solid var(--violet); outline-offset: 6px; border-radius: 4px; }
     .rail-l .node { justify-content: flex-end; text-align: right; }
     .rail-r .node { justify-content: flex-start; text-align: left; }
 
@@ -340,6 +347,7 @@
     .out-more a:hover { color: var(--ink); }
 
     /* — timeline — */
+    .tl-group { scroll-margin-top: 84px; }
     .tl-group + .tl-group { margin-top: clamp(30px, 4vw, 46px); }
     .tl-kicker { font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--violet); margin-bottom: 18px; }
     .tl-item { position: relative; padding: 0 0 26px 46px; }
@@ -557,20 +565,20 @@
   <!-- ══════════ HERO ══════════ -->
   <main class="hero" id="top">
     <div class="rail rail-l" id="railL">
-      <div class="node">
+      <a class="node" href="#career">
         <div class="txt">
           <p class="k">Now</p>
           <p class="v">Cloud &amp; AI Engineer<small>Sojitz Tech-Innovation</small></p>
         </div>
         <span class="lead"></span>
-      </div>
-      <div class="node">
+      </a>
+      <a class="node" href="#education">
         <div class="txt">
           <p class="k">Research</p>
           <p class="v">Ph.D. Candidate<small>The University of Tokyo</small></p>
         </div>
         <span class="lead"></span>
-      </div>
+      </a>
     </div>
 
     <div class="figure">
@@ -661,20 +669,20 @@
     </div>
 
     <div class="rail rail-r" id="railR">
-      <div class="node">
+      <a class="node" href="#work">
         <span class="lead"></span>
         <div class="txt">
           <p class="k">Building</p>
           <p class="v">AI Agents on Azure<small>Foundry · RAG · Full-stack</small></p>
         </div>
-      </div>
-      <div class="node">
+      </a>
+      <a class="node" href="#research">
         <span class="lead"></span>
         <div class="txt">
           <p class="k">Studying</p>
           <p class="v">Labor &amp; Inequality<small>移民労働と仲介構造</small></p>
         </div>
-      </div>
+      </a>
     </div>
 
     <div class="lede">
@@ -948,7 +956,7 @@
         <span class="jp">経歴</span>
       </div>
 
-      <div class="tl-group rv">
+      <div class="tl-group rv" id="career">
         <p class="tl-kicker">職歴 / Work</p>
         <div class="tl-item">
           <img class="tl-logo" src="logo-sojitz.png" alt="Sojitz Tech-Innovation" loading="lazy" />
@@ -968,7 +976,7 @@
         </div>
       </div>
 
-      <div class="tl-group rv">
+      <div class="tl-group rv" id="education">
         <p class="tl-kicker">学歴 / Education</p>
         <div class="tl-item">
           <img class="tl-logo" src="logo-utokyo.png" alt="The University of Tokyo" loading="lazy" />
