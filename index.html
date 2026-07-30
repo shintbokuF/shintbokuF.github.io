@@ -163,12 +163,8 @@
     }
 
     .fig-name { text-align: center; }
-    .fig-name .sig-jp { height: clamp(32px, 4.4vw, 44px); width: auto; display: block; margin: 0 auto; }
-    .js .fig-name .sig-jp { clip-path: inset(0 100% 0 0); }
-    .js .fig-name .sig-jp.in { animation: write 1.5s var(--ease) .5s forwards; }
-    @keyframes write { to { clip-path: inset(0 0 0 0); } }
     .fig-name .kana {
-      margin-top: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: .26em;
+      font-family: var(--mono); font-size: 10px; letter-spacing: .26em;
       color: var(--faint); text-transform: uppercase;
     }
 
@@ -491,7 +487,6 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .js .rv, .js .node .txt, .js .scholar .pc { opacity: 1; transform: none; }
       .js .rail::before, .js .node .lead { transform: none; }
-      .js .fig-name .sig-jp { clip-path: none; }
       .glow { display: none; }
     }
   </style>
@@ -663,7 +658,6 @@
       </div>
 
       <div class="fig-name">
-        <img class="sig-jp" id="sigJp" src="sig-kanji.png" alt="卜 新哲" />
         <p class="kana">Boku Shintetsu · ぼく しんてつ</p>
       </div>
     </div>
@@ -1192,7 +1186,7 @@
       }
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
 
-    document.querySelectorAll('.rv, .rail, #sigJp, #scholar').forEach(el => io.observe(el));
+    document.querySelectorAll('.rv, .rail, #scholar').forEach(el => io.observe(el));
   </script>
 
   <!-- 訪客分析 (GoatCounter) — 管理画面 https://shinprofile.goatcounter.com にログインした自分だけが閲覧可 -->
