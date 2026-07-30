@@ -346,15 +346,11 @@
     .tl-item:last-child { padding-bottom: 0; }
     .tl-item::before { content: ""; position: absolute; left: 16px; top: 8px; bottom: 0; width: 1px; background: var(--line); }
     .tl-item:last-child::before { display: none; }
-    /* text mark instead of a hotlinked corporate logo — no third-party
-       requests, no trademark use */
-    .tl-mark {
+    /* logos are served from this repo, not hotlinked from Wikipedia */
+    .tl-logo {
       position: absolute; left: 0; top: 0; z-index: 1;
-      width: 33px; height: 33px; border-radius: 9px;
-      display: grid; place-items: center;
+      width: 33px; height: 33px; border-radius: 9px; object-fit: contain; padding: 5px;
       background: var(--paper); border: 1px solid var(--line);
-      font-family: var(--mono); font-size: 10.5px; font-weight: 700;
-      letter-spacing: .02em; color: var(--violet-deep);
     }
     .tl-item h3 { font-size: 16.5px; font-weight: 700; }
     .tl-item .role { color: var(--violet-deep); font-weight: 700; font-size: 14px; margin-top: 2px; }
@@ -955,7 +951,7 @@
       <div class="tl-group rv">
         <p class="tl-kicker">職歴 / Work</p>
         <div class="tl-item">
-          <span class="tl-mark" aria-hidden="true">STI</span>
+          <img class="tl-logo" src="logo-sojitz.png" alt="Sojitz Tech-Innovation" loading="lazy" />
           <div>
             <h3>Sojitz Tech-Innovation Co., Ltd.</h3>
             <p class="role">AI Cloud Solution Engineer</p>
@@ -975,7 +971,7 @@
       <div class="tl-group rv">
         <p class="tl-kicker">学歴 / Education</p>
         <div class="tl-item">
-          <span class="tl-mark" aria-hidden="true">UT</span>
+          <img class="tl-logo" src="logo-utokyo.png" alt="The University of Tokyo" loading="lazy" />
           <div>
             <h3>The University of Tokyo</h3>
             <p class="role">Ph.D. Program · Graduate School of Interdisciplinary Information Studies</p>
@@ -984,7 +980,7 @@
           </div>
         </div>
         <div class="tl-item">
-          <span class="tl-mark" aria-hidden="true">UT</span>
+          <img class="tl-logo" src="logo-utokyo.png" alt="The University of Tokyo" loading="lazy" />
           <div>
             <h3>The University of Tokyo</h3>
             <p class="role">Master's Program · Graduate School of Interdisciplinary Information Studies</p>
@@ -1036,11 +1032,11 @@
               <span><b>Azure AI Fundamentals</b><span class="sub">Microsoft</span></span>
             </li>
             <li>
-              <span class="ic"><span class="iconify" data-icon="lucide:languages"></span></span>
+              <span class="ic"><img src="logo-jlpt.png" alt="" loading="lazy" /></span>
               <span><b>日本語能力試験 N1</b><span class="sub">JLPT</span></span>
             </li>
             <li>
-              <span class="ic"><span class="iconify" data-icon="lucide:globe"></span></span>
+              <span class="ic"><img src="logo-toeic.png" alt="" loading="lazy" /></span>
               <span><b>TOEIC 810点</b><span class="sub">English</span></span>
             </li>
           </ul>
