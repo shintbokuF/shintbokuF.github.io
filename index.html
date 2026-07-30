@@ -4,8 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Victor Bu | 卜 新哲</title>
-  <meta name="description" content="Victor Bu (卜 新哲 / ぼく しんてつ) — Cloud &amp; AI engineer at Sojitz Tech-Innovation, Ph.D. candidate in sociology at the University of Tokyo." />
+  <meta name="description" content="Victor Bu (卜 新哲 / ぼく しんてつ) — Cloud &amp; AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
   <link rel="icon" href="sig-bu.png" />
+  <link rel="canonical" href="https://shintbokuf.github.io/" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Victor Bu | 卜 新哲" />
+  <meta property="og:title" content="Victor Bu | 卜 新哲" />
+  <meta property="og:description" content="Cloud &amp; AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
+  <meta property="og:url" content="https://shintbokuf.github.io/" />
+  <meta property="og:image" content="https://shintbokuf.github.io/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Victor Bu — AI Cloud Solution Engineer, Ph.D. candidate" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="profile:first_name" content="新哲" />
+  <meta property="profile:last_name" content="卜" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Victor Bu | 卜 新哲" />
+  <meta name="twitter:description" content="Cloud &amp; AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
+  <meta name="twitter:image" content="https://shintbokuf.github.io/og-card.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -327,10 +346,15 @@
     .tl-item:last-child { padding-bottom: 0; }
     .tl-item::before { content: ""; position: absolute; left: 16px; top: 8px; bottom: 0; width: 1px; background: var(--line); }
     .tl-item:last-child::before { display: none; }
-    .tl-logo {
+    /* text mark instead of a hotlinked corporate logo — no third-party
+       requests, no trademark use */
+    .tl-mark {
       position: absolute; left: 0; top: 0; z-index: 1;
-      width: 33px; height: 33px; border-radius: 9px; object-fit: contain; padding: 5px;
+      width: 33px; height: 33px; border-radius: 9px;
+      display: grid; place-items: center;
       background: var(--paper); border: 1px solid var(--line);
+      font-family: var(--mono); font-size: 10.5px; font-weight: 700;
+      letter-spacing: .02em; color: var(--violet-deep);
     }
     .tl-item h3 { font-size: 16.5px; font-weight: 700; }
     .tl-item .role { color: var(--violet-deep); font-weight: 700; font-size: 14px; margin-top: 2px; }
@@ -467,6 +491,48 @@
       .glow { display: none; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "卜 新哲",
+    "alternateName": ["Victor Bu", "Xinzhe Bu", "ぼく しんてつ", "ボク シンテツ"],
+    "url": "https://shintbokuf.github.io/",
+    "image": "https://shintbokuf.github.io/og-card.png",
+    "jobTitle": "AI Cloud Solution Engineer",
+    "description": "Cloud & AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Sojitz Tech-Innovation Co., Ltd."
+    },
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "The University of Tokyo",
+      "department": "Graduate School of Interdisciplinary Information Studies"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "The University of Tokyo"
+    },
+    "knowsAbout": [
+      "Microsoft Azure", "Generative AI", "AI agents", "Retrieval-Augmented Generation",
+      "Vector search", "Sociology", "Labour studies", "Migration studies",
+      "Cross-border labour markets", "Media and communication"
+    ],
+    "knowsLanguage": [
+      { "@type": "Language", "name": "Japanese" },
+      { "@type": "Language", "name": "Chinese" },
+      { "@type": "Language", "name": "English" }
+    ],
+    "sameAs": [
+      "https://researchmap.jp/buxinzhe",
+      "https://zenn.dev/snboku",
+      "https://github.com/shintbokuF"
+    ]
+  }
+  </script>
+
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -673,9 +739,9 @@
           <div>
             <h3>社内 AI システムの保守・運用<span class="en">Enterprise RAG Operations</span></h3>
             <div class="meta">
+              <span class="live">Ongoing</span>
               <span>Operations</span>
               <span>RAG</span>
-              <span>Improvement</span>
             </div>
             <p>
               RAG を用いた社内 AI システムの保守・運用を担当。
@@ -694,10 +760,11 @@
         </article>
 
         <article class="proj-row rv">
-          <p class="yr">2026</p>
+          <p class="yr">2026 · 完了</p>
           <div>
             <h3>AI エージェントによる資料生成基盤<span class="en">Document Generation Agents</span></h3>
             <div class="meta">
+              <span>Completed</span>
               <span>PoC</span>
               <span>Agent Workflow</span>
             </div>
@@ -721,6 +788,7 @@
           <div>
             <h3>テックニュースダイジェスト<span class="en">Daily Tech Digest</span></h3>
             <div class="meta">
+              <span class="live">Ongoing</span>
               <span>Personal</span>
               <span>Automation</span>
             </div>
@@ -887,7 +955,7 @@
       <div class="tl-group rv">
         <p class="tl-kicker">職歴 / Work</p>
         <div class="tl-item">
-          <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Sojitz_logo.svg/250px-Sojitz_logo.svg.png" alt="Sojitz Tech-Innovation" loading="lazy" />
+          <span class="tl-mark" aria-hidden="true">STI</span>
           <div>
             <h3>Sojitz Tech-Innovation Co., Ltd.</h3>
             <p class="role">AI Cloud Solution Engineer</p>
@@ -907,7 +975,7 @@
       <div class="tl-group rv">
         <p class="tl-kicker">学歴 / Education</p>
         <div class="tl-item">
-          <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/University_of_Tokyo_symbol.svg/250px-University_of_Tokyo_symbol.svg.png" alt="The University of Tokyo" loading="lazy" />
+          <span class="tl-mark" aria-hidden="true">UT</span>
           <div>
             <h3>The University of Tokyo</h3>
             <p class="role">Ph.D. Program · Graduate School of Interdisciplinary Information Studies</p>
@@ -916,7 +984,7 @@
           </div>
         </div>
         <div class="tl-item">
-          <img class="tl-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/University_of_Tokyo_symbol.svg/250px-University_of_Tokyo_symbol.svg.png" alt="The University of Tokyo" loading="lazy" />
+          <span class="tl-mark" aria-hidden="true">UT</span>
           <div>
             <h3>The University of Tokyo</h3>
             <p class="role">Master's Program · Graduate School of Interdisciplinary Information Studies</p>
@@ -968,11 +1036,11 @@
               <span><b>Azure AI Fundamentals</b><span class="sub">Microsoft</span></span>
             </li>
             <li>
-              <span class="ic"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Japanese-Language_Proficiency_Test_logo.svg/250px-Japanese-Language_Proficiency_Test_logo.svg.png" alt="" loading="lazy" /></span>
+              <span class="ic"><span class="iconify" data-icon="lucide:languages"></span></span>
               <span><b>日本語能力試験 N1</b><span class="sub">JLPT</span></span>
             </li>
             <li>
-              <span class="ic"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/TOEIC_logo.png/250px-TOEIC_logo.png" alt="" loading="lazy" /></span>
+              <span class="ic"><span class="iconify" data-icon="lucide:globe"></span></span>
               <span><b>TOEIC 810点</b><span class="sub">English</span></span>
             </li>
           </ul>
