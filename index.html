@@ -312,8 +312,15 @@
     .proj-row .stack li::before { content: "—"; color: var(--violet); flex: none; }
 
     /* — strengths — */
-    .str-lede { font-size: clamp(15px, 1.7vw, 17.5px); max-width: 60ch; margin-bottom: clamp(22px, 3vw, 32px); }
-    .str-lede .en { display: block; margin-top: 7px; font-size: 13px; color: var(--faint); }
+    .str-lede {
+      font-family: "Noto Serif JP", serif; font-weight: 500;
+      font-size: clamp(16px, 2vw, 20px); line-height: 1.75;
+      max-width: 56ch; margin-bottom: clamp(24px, 3.2vw, 36px);
+    }
+    .str-lede .en {
+      display: block; margin-top: 8px; font-size: 13px; color: var(--faint);
+      font-family: "Noto Sans JP", sans-serif; font-weight: 400;
+    }
     .str { border-top: 1px solid var(--line-2); }
     .str-row {
       display: grid; grid-template-columns: 88px 1fr;
@@ -718,8 +725,8 @@
 
     <div class="lede">
       <p>
-        クラウドと AI を軸に、仕組みの設計からプロトタイプの実装までを手がけています。研究では社会学の視点から、労働と格差の問題を追っています。
-        <span class="en">Cloud &amp; AI engineer by day, sociology researcher by trade — building systems, and studying how work shapes inequality.</span>
+        クラウドと AI を軸に、課題の切り分けから設計・実装・本番投入までを手がけています。研究では社会学の視点から、労働と格差の問題を追っています。
+        <span class="en">Building AI systems in industry; studying labour and inequality in academia.</span>
       </p>
       <p class="links">
         <a href="https://zenn.dev/snboku" target="_blank" rel="noopener">Zenn ↗</a>
@@ -737,28 +744,24 @@
     <div class="wrap">
       <div class="sec-head rv">
         <span class="num">00</span>
-        <h2>What I Do</h2>
+        <h2>What I'm Good At</h2>
         <span class="jp">強み</span>
       </div>
 
       <p class="str-lede rv">
-        案件で自分が担ってきた役割は、だいたいこの3つです。
-        <span class="en">Across projects, these are the three roles I've actually played.</span>
+        複雑な問題を切り分け、多言語・多者間を調整し、最後まで動かす。
+        <span class="en">Isolate the real problem, align people across languages, and drive it until it runs.</span>
       </p>
 
       <div class="str">
         <article class="str-row rv">
           <p class="no">01</p>
           <div>
-            <h3>原因の切り分けと特定<span class="en">Root-cause analysis</span></h3>
-            <p class="desc">
-              「原因不明」で止まっている問題を、層ごとに切り分けて真因を一点に絞ります。
-              <span class="en">When something is stuck with the cause unknown, I split it layer by layer until the real cause is a single point.</span>
-            </p>
+            <h3>真因を突き止める<span class="en">Root-cause Analysis</span></h3>
+            <p class="desc">原因不明で止まった課題を層ごとに分解し、本質的な要因を特定・解決。エラーの文言は、まず疑う。</p>
             <p class="ex">
               <span class="lbl">例</span>
-              数週間止まっていた外部システム連携を、TLS 中間証明書の欠落と User-Agent ヘッダ未送信の2点に特定して開通させました。
-              <span class="en">Restored a weeks-long stalled system integration by pinning it to two causes — a missing TLS intermediate certificate and an absent User-Agent header.</span>
+              数週間停止していた外部システム連携を、TLS 中間証明書の欠落と User-Agent ヘッダ未送信の2点で復旧。
             </p>
           </div>
         </article>
@@ -766,15 +769,11 @@
         <article class="str-row rv">
           <p class="no">02</p>
           <div>
-            <h3>関係者間の調整と「翻訳」<span class="en">Coordination &amp; translation</span></h3>
-            <p class="desc">
-              客先・協力会社・開発チームのあいだに立ち、日本語・中国語・英語をまたいで、曖昧な要望を判断できる形に置き換えます。
-              <span class="en">I sit between the client, partner vendors and developers — across Japanese, Chinese and English — turning vague requests into something a team can actually decide on.</span>
-            </p>
+            <h3>言葉と要求を「翻訳」する<span class="en">Translation &amp; Alignment</span></h3>
+            <p class="desc">日・中・英でクライアント・開発・ベンダーをつなぎ、曖昧な要望を判断可能な要件に整理。決めるのが誰かも、はっきりさせる。</p>
             <p class="ex">
               <span class="lbl">例</span>
-              「たまに不安定」という報告を、再現率 40% という数値に置き換えて合意形成。日越バイリンガルの引き継ぎ資料も整備しました。
-              <span class="en">Turned a report of “sometimes unstable” into a measured 40% reproduction rate; also produced Japanese–Vietnamese bilingual handover material.</span>
+              「たまに不安定」という報告を「10回中4回」と数値化してから対策。日越二言語構成の引継ぎ資料も整備。
             </p>
           </div>
         </article>
@@ -782,15 +781,11 @@
         <article class="str-row rv">
           <p class="no">03</p>
           <div>
-            <h3>最後まで推進して実現する<span class="en">Driving it through to done</span></h3>
-            <p class="desc">
-              設計からプロトタイプ、本番投入まで通します。まず動くものを出して、そこから詰めます。
-              <span class="en">Design, prototype, production release. I get something running first, then tighten it.</span>
-            </p>
+            <h3>やり切る・形にする<span class="en">End-to-End Delivery</span></h3>
+            <p class="desc">設計 → 試作 → 本番まで一貫して推進。まず動くものを出し、改善を重ねる。</p>
             <p class="ex">
               <span class="lbl">例</span>
-              技術的な行き詰まりから 1 か月で役員デモまで持ち込み、新規案件では着手初日に動くデモを提示しました。
-              <span class="en">Took a technical dead end to a board-level demo in one month; on a new project, had a working demo on day one.</span>
+              行き詰まりから1か月で役員デモを実現。新規案件では着手初日に動作デモを提示。
             </p>
           </div>
         </article>
