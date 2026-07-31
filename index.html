@@ -311,6 +311,39 @@
     .proj-row .stack li { font-size: 13px; color: var(--muted); display: flex; gap: 9px; align-items: baseline; }
     .proj-row .stack li::before { content: "—"; color: var(--violet); flex: none; }
 
+    /* — strengths — */
+    .str-lede { font-size: clamp(15px, 1.7vw, 17.5px); max-width: 60ch; margin-bottom: clamp(22px, 3vw, 32px); }
+    .str-lede .en { display: block; margin-top: 7px; font-size: 13px; color: var(--faint); }
+    .str { border-top: 1px solid var(--line-2); }
+    .str-row {
+      display: grid; grid-template-columns: 88px 1fr;
+      gap: clamp(16px, 3vw, 38px); align-items: start;
+      padding: clamp(22px, 3vw, 32px) 0;
+      border-bottom: 1px solid var(--line-2); position: relative;
+    }
+    .str-row::before {
+      content: ""; position: absolute; left: -32px; top: 0; bottom: 0; width: 2px;
+      background: var(--violet); opacity: 0; transition: opacity .3s ease;
+    }
+    .str-row:hover::before { opacity: 1; }
+    .str-row .no { font-family: var(--mono); font-size: 12px; color: var(--faint); letter-spacing: .06em; padding-top: 7px; }
+    .str-row h3 { font-size: clamp(18px, 2.4vw, 25px); font-weight: 700; line-height: 1.35; letter-spacing: -.01em; }
+    .str-row h3 .en {
+      display: block; font-family: "Playfair Display", serif; font-style: italic;
+      font-weight: 500; font-size: 14.5px; color: var(--violet); letter-spacing: 0; margin-top: 3px;
+    }
+    .str-row .desc { color: var(--muted); font-size: 14.5px; margin-top: 12px; max-width: 62ch; }
+    .str-row .desc .en { display: block; margin-top: 5px; font-size: 12.5px; color: var(--faint); }
+    .str-row .ex {
+      margin-top: 14px; padding-left: 15px; border-left: 2px solid #e9e2f6;
+      font-size: 13.5px; color: var(--muted); max-width: 62ch;
+    }
+    .str-row .ex .lbl {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--violet); display: block; margin-bottom: 4px;
+    }
+    .str-row .ex .en { display: block; margin-top: 5px; font-size: 12px; color: var(--faint); }
+
     /* — research output — */
     .out-group + .out-group { margin-top: clamp(26px, 3.6vw, 40px); }
     .out-head { display: flex; align-items: baseline; gap: 12px; padding-bottom: 9px; border-bottom: 1px solid var(--line); }
@@ -449,6 +482,9 @@
       .proj-row { grid-template-columns: 1fr; gap: 13px; }
       .proj-row .yr { padding-top: 0; }
       .proj-row::before { left: -16px; }
+      .str-row { grid-template-columns: 1fr; gap: 10px; }
+      .str-row .no { padding-top: 0; }
+      .str-row::before { left: -16px; }
       .contact-grid { grid-template-columns: 1fr; }
       .sec-head { flex-wrap: wrap; gap: 12px; }
       .sec-head .jp { margin-left: 0; width: 100%; padding-top: 0; }
@@ -543,6 +579,7 @@
         <img src="sig-bu.png" alt="Victor Bu" />
       </a>
       <div class="nav-links" id="navLinks">
+        <a href="#strengths">強み</a>
         <a href="#work">Work</a>
         <a href="#research">研究業績</a>
         <a href="#experience">経歴</a>
@@ -691,9 +728,75 @@
     </div>
 
     <div class="cue">
-      <a href="#work"><span class="bar"></span><span class="t">Selected work ↓</span></a>
+      <a href="#strengths"><span class="bar"></span><span class="t">What I do ↓</span></a>
     </div>
   </main>
+
+  <!-- ══════════ 00 STRENGTHS ══════════ -->
+  <section class="block" id="strengths">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="num">00</span>
+        <h2>What I Do</h2>
+        <span class="jp">強み</span>
+      </div>
+
+      <p class="str-lede rv">
+        案件で自分が担ってきた役割は、だいたいこの3つです。
+        <span class="en">Across projects, these are the three roles I've actually played.</span>
+      </p>
+
+      <div class="str">
+        <article class="str-row rv">
+          <p class="no">01</p>
+          <div>
+            <h3>原因の切り分けと特定<span class="en">Root-cause analysis</span></h3>
+            <p class="desc">
+              「原因不明」で止まっている問題を、層ごとに切り分けて真因を一点に絞ります。
+              <span class="en">When something is stuck with the cause unknown, I split it layer by layer until the real cause is a single point.</span>
+            </p>
+            <p class="ex">
+              <span class="lbl">例</span>
+              数週間止まっていた外部システム連携を、TLS 中間証明書の欠落と User-Agent ヘッダ未送信の2点に特定して開通させました。
+              <span class="en">Restored a weeks-long stalled system integration by pinning it to two causes — a missing TLS intermediate certificate and an absent User-Agent header.</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="str-row rv">
+          <p class="no">02</p>
+          <div>
+            <h3>関係者間の調整と「翻訳」<span class="en">Coordination &amp; translation</span></h3>
+            <p class="desc">
+              客先・協力会社・開発チームのあいだに立ち、日本語・中国語・英語をまたいで、曖昧な要望を判断できる形に置き換えます。
+              <span class="en">I sit between the client, partner vendors and developers — across Japanese, Chinese and English — turning vague requests into something a team can actually decide on.</span>
+            </p>
+            <p class="ex">
+              <span class="lbl">例</span>
+              「たまに不安定」という報告を、再現率 40% という数値に置き換えて合意形成。日越バイリンガルの引き継ぎ資料も整備しました。
+              <span class="en">Turned a report of “sometimes unstable” into a measured 40% reproduction rate; also produced Japanese–Vietnamese bilingual handover material.</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="str-row rv">
+          <p class="no">03</p>
+          <div>
+            <h3>最後まで推進して実現する<span class="en">Driving it through to done</span></h3>
+            <p class="desc">
+              設計からプロトタイプ、本番投入まで通します。まず動くものを出して、そこから詰めます。
+              <span class="en">Design, prototype, production release. I get something running first, then tighten it.</span>
+            </p>
+            <p class="ex">
+              <span class="lbl">例</span>
+              技術的な行き詰まりから 1 か月で役員デモまで持ち込み、新規案件では着手初日に動くデモを提示しました。
+              <span class="en">Took a technical dead end to a board-level demo in one month; on a new project, had a working demo on day one.</span>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- ══════════ 01 WORK (core) ══════════ -->
   <section class="block tint" id="work">
