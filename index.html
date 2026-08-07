@@ -792,7 +792,7 @@
             <p class="desc">設計 → 試作 → 本番まで一貫して推進。まず動くものを出し、改善を重ねる。</p>
             <p class="ex">
               <span class="lbl">例</span>
-              5,000人規模の商社向け AI ヘルプデスクを、顧客との要件整理・デモ・約70回の改善を重ね、2か月で本番導入。
+              5,000人規模の商社向け AI ヘルプデスクを、顧客との要件整理・デモ・約70回の改善を重ね、2か月で本番導入。対応時間約60%・人件費約30%の削減を見込む。
             </p>
           </div>
         </article>
@@ -821,17 +821,18 @@
             </div>
             <p>
               5,000人規模の商社向け AI ヘルプデスク基盤を、2か月で設計・開発し、本番導入。
-              顧客と直接対話しながら要件整理、フルスタック実装、デモ、ミーティングのリードまで一貫して担当し、
-              フィードバックを約70回の改善につなげました。
+              顧客との要件整理、デモ、ミーティングをリードし、フィードバックを約70回の改善へ反映しました。
+              Next.js / Python によるフルスタック開発から Azure App Service (Web Apps) を中心としたインフラ構築まで担当。
+              UX/UI を再設計して7つの主要コンポーネントを実装し、ストリーミング応答の体感速度・状態表示を改善。チケット管理システムとの API 連携も実現しました。導入効果として、対応時間約60%、人件費約30%の削減を見込んでいます。
             </p>
           </div>
           <div class="stack">
             <span class="lbl">Stack</span>
             <ul>
-              <li>Microsoft Foundry</li>
-              <li>Vector Search / RAG</li>
-              <li>TypeScript · Next.js</li>
-              <li>Azure App Service · Cosmos DB</li>
+              <li>Microsoft Foundry · Vector Search / RAG</li>
+              <li>Next.js · TypeScript · Python</li>
+              <li>Azure App Service (Web Apps) · Cosmos DB</li>
+              <li>Streaming UI · Ticketing API</li>
             </ul>
           </div>
         </article>
@@ -839,48 +840,28 @@
         <article class="proj-row rv">
           <p class="yr">2025 – 2026</p>
           <div>
-            <h3>社内 RAG システムの開発・運用<span class="en">Enterprise RAG Systems</span></h3>
+            <h3>社内 RAG・資料生成システム<span class="en">Enterprise RAG &amp; Document Generation</span></h3>
             <div class="meta">
               <span class="live">Delivered</span>
-              <span>Development &amp; Operations</span>
-              <span>RAG</span>
+              <span>Full-stack &amp; Infrastructure</span>
+              <span>RAG → Agents</span>
             </div>
             <p>
-              2社向けに複数の社内 RAG システムを開発・運用。
-              Azure 上の基盤運用・監視、検索精度の改善、利用者要望に応じた追加機能開発まで継続して担当。
+              2社向けに複数の社内 RAG システムを開発・運用し、Next.js / Python によるアプリケーションから
+              Azure App Service (Web Apps) を中心としたインフラまで一貫して構築。基盤運用・監視、検索精度の改善、追加機能開発を担当しました。
+              2026年5月から7月には、既存基盤をオフィス文書生成へ拡張。RAG ナレッジベースと社内テンプレートを組み合わせ、
+              PowerPoint・レポートを生成するエージェントワークフローを構築しました。プロンプト、ワークフロー、テンプレートを設計し、
+              Microsoft Foundry Agents と Python による社内ルール・安全要件に沿った資料生成を実装しました。
             </p>
           </div>
           <div class="stack">
             <span class="lbl">Stack</span>
             <ul>
-              <li>Azure AI Search</li>
-              <li>RAG / Embeddings</li>
-              <li>Azure App Service</li>
-              <li>Monitoring · CI/CD</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="proj-row rv">
-          <p class="yr">2026 · 完了</p>
-          <div>
-            <h3>AI エージェントによる資料生成基盤<span class="en">Document Generation Agents</span></h3>
-            <div class="meta">
-              <span>Completed</span>
-              <span>PoC</span>
-              <span>Agent Workflow</span>
-            </div>
-            <p>
-              対話から PowerPoint / Word を生成・編集する AI エージェント基盤を PoC として構築。
-              複数エージェントによるワークフローと、生成物をレビューして作り直す自己修正ループを実装しました。
-            </p>
-          </div>
-          <div class="stack">
-            <span class="lbl">Stack</span>
-            <ul>
+              <li>Azure AI Search · RAG</li>
               <li>Microsoft Foundry Agents</li>
-              <li>Python · python-pptx</li>
-              <li>Azure Functions · ADLS Gen2</li>
+              <li>Next.js · Python · python-pptx</li>
+              <li>Azure App Service (Web Apps) · ADLS Gen2</li>
+              <li>Monitoring · CI/CD</li>
             </ul>
           </div>
         </article>
@@ -1072,9 +1053,9 @@
             <p class="date">2025.4 – 2026.8</p>
             <p>Azure を中心に、生成 AI・AI エージェントの要件整理から設計、実装、デモ、本番導入、運用までを一貫して担当。</p>
             <ul class="tl-list">
-              <li>5,000人規模の商社向け AI ヘルプデスク基盤を2か月で本番導入（顧客折衝・フルスタック開発・約70回の改善）</li>
-              <li>2社向けの複数の社内 RAG システムを開発・運用（検索精度改善・追加開発・Azure 基盤運用）</li>
-              <li>商社・SIer 向け AI システムおよび AI エージェントの構築・導入</li>
+              <li>5,000人規模の商社向け AI ヘルプデスク基盤を2か月で本番導入（約70回の改善、対応時間約60%・人件費約30%削減見込み）</li>
+              <li>2社向けの複数の社内 RAG システムを開発・運用し、RAG ベースの PowerPoint・レポート生成へ拡張</li>
+              <li>Next.js / Python によるフルスタック開発、および Azure App Service (Web Apps) を中心としたインフラの設計・構築</li>
               <li>最新 AI ワークフロー基盤の設計・開発</li>
             </ul>
           </div>
