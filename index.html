@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Victor Bu | 卜 新哲</title>
-  <meta name="description" content="Victor Bu (卜 新哲 / ぼく しんてつ) — Cloud &amp; AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
+  <meta name="description" content="Victor Bu (卜 新哲 / ぼく しんてつ) — Gen AI consultant at Mitsubishi Research Institute (MRI). Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
   <link rel="icon" href="sig-bu.png" />
   <link rel="canonical" href="https://shintbokuf.github.io/" />
 
   <meta property="og:type" content="profile" />
   <meta property="og:site_name" content="Victor Bu | 卜 新哲" />
   <meta property="og:title" content="Victor Bu | 卜 新哲" />
-  <meta property="og:description" content="Cloud &amp; AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
+  <meta property="og:description" content="Victor Bu — Gen AI consultant at Mitsubishi Research Institute (MRI) and Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
   <meta property="og:url" content="https://shintbokuf.github.io/" />
   <meta property="og:image" content="https://shintbokuf.github.io/og-card.png" />
   <meta property="og:image:width" content="1200" />
@@ -23,7 +23,7 @@
   <meta property="profile:last_name" content="卜" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Victor Bu | 卜 新哲" />
-  <meta name="twitter:description" content="Cloud &amp; AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
+  <meta name="twitter:description" content="Victor Bu — Gen AI consultant at Mitsubishi Research Institute (MRI) and Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
   <meta name="twitter:image" content="https://shintbokuf.github.io/og-card.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -129,11 +129,12 @@
       min-height: min(74vh, 660px);
     }
 
-    /* — the figure: traced vector, assembled facet by facet — */
+    /* — the figure: portrait with a warm-red graphic accent — */
     .figure { display: flex; flex-direction: column; align-items: center; gap: 15px; flex: none; }
     .scholar {
       position: relative;
       width: clamp(148px, 20vw, 226px);
+      aspect-ratio: 656 / 834;
       perspective: 900px;
     }
     .js .scholar { animation: float 7.5s ease-in-out infinite; }
@@ -145,10 +146,20 @@
       transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
       transition: transform .5s var(--ease);
     }
-    .scholar svg {
-      width: 100%; height: auto; display: block; overflow: visible;
-      filter: drop-shadow(0 18px 24px rgba(85, 57, 155, .13));
+    .scholar svg { display: none; }
+    .portrait-frame {
+      position: relative; overflow: hidden; width: 100%; height: 100%;
+      border-radius: 48% 48% 42% 42% / 38% 38% 18% 18%;
+      background: #f4eeee;
+      box-shadow: 0 18px 28px rgba(188, 67, 56, .16);
     }
+    .portrait-frame::before, .portrait-frame::after {
+      content: ""; position: absolute; z-index: 2; border-radius: 50%; pointer-events: none;
+      background: #df5548;
+    }
+    .portrait-frame::before { width: 18%; aspect-ratio: 1; right: 8%; top: 12%; box-shadow: -160px 254px 0 -5px #ee9b8d; }
+    .portrait-frame::after { width: 8%; aspect-ratio: 1; left: 9%; top: 27%; background: #f2b8ad; }
+    .portrait-photo { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; }
 
     /* each facet is its own path — it flies in, then drifts on hover */
     .js .scholar .pc {
@@ -490,6 +501,75 @@
       .js .rail::before, .js .node .lead { transform: none; }
       .glow { display: none; }
     }
+    /* ══════════ 2026 art-tech refresh ══════════ */
+    :root {
+      --paper: #fffdfb; --paper-2: #f7f5f2; --ink: #17181d;
+      --muted: #65636a; --faint: #98939a; --line: #e8e1df; --line-2: #f1ebea;
+      --violet: #d95345; --violet-deep: #a83a32; --violet-soft: rgba(217,83,69,.10);
+    }
+    body { background: radial-gradient(circle at 85% 4%, #fff2ec 0, transparent 23rem), var(--paper); padding-left: 172px; }
+    header { position: fixed; inset: 0 auto 0 0; width: 172px; border-right: 1px solid var(--line); border-bottom: 0; background: rgba(255,253,251,.88); }
+    .nav { height: 100%; padding: 42px 27px; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 64px; }
+    .brand img { height: 29px; }
+    .nav-links { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .nav-links a { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+    .nav-links a.ext { margin-top: 8px; }
+    .hero { width: min(1180px, 100%); max-width: none; zoom: 1; min-height: 760px; padding: clamp(74px, 9vw, 124px) 52px 66px; grid-template-columns: minmax(0, 1.16fr) minmax(270px, .84fr); grid-template-rows: auto auto; gap: 30px 64px; }
+    .rail { gap: 12px; }
+    .rail::before, .rail .lead { display: none; }
+    .rail-l { grid-column: 1; grid-row: 1; }
+    .rail-r { grid-column: 1; grid-row: 2; grid-template-columns: 1fr 1fr; }
+    .rail .node { display: block; padding: 18px 20px; text-align: left !important; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.72); box-shadow: 0 12px 24px rgba(62,31,26,.035); }
+    .rail .node:hover { border-color: #e49c92; transform: translateY(-3px); }
+    .node .k { color: var(--violet); font-size: 9px; }
+    .node .v { font-size: 15px; }
+    .hero-title { margin-bottom: 24px; }
+    .hero-title .eyebrow { font-family: var(--mono); color: var(--violet); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+    .hero-title h1 { margin-top: 10px; font: 500 clamp(48px, 6.2vw, 86px)/.92 "Playfair Display", "Noto Serif JP", serif; letter-spacing: -.055em; }
+    .hero-title h1 em { color: var(--violet); font-style: italic; }
+    .hero-title p { max-width: 43ch; margin-top: 21px; color: var(--muted); font-size: 14px; }
+    .figure { grid-column: 2; grid-row: 1 / span 2; position: relative; align-self: center; }
+    .fluid-lines { position: absolute; z-index: -1; width: 126%; height: 126%; left: -14%; top: -12%; overflow: visible; pointer-events: none; }
+    .fluid-lines path { fill: none; stroke: #dc7368; stroke-width: 1.1; stroke-linecap: round; opacity: .7; stroke-dasharray: 7 8; }
+    .scholar { width: min(100%, 250px); }
+    .portrait-frame { border-radius: 44% 44% 39% 39% / 26% 26% 16% 16%; box-shadow: 22px 24px 0 #f5d9d3, 0 24px 44px rgba(128,48,38,.16); }
+    .portrait-frame::before { width: 19%; right: -3%; top: 9%; box-shadow: -242px 333px 0 -7px #efad9f; }
+    .portrait-frame::after { width: 8%; left: -5%; top: 23%; }
+    .fig-name { margin-top: 13px; padding: 7px 12px; background: #fff; border: 1px solid var(--line); border-radius: 999px; }
+    .lede { display: none; }
+    .hero-metrics { grid-column: 1 / -1; display: flex; gap: clamp(30px, 6vw, 76px); border-top: 1px solid var(--line); padding-top: 21px; }
+    .metric { min-width: 170px; padding: 0; }
+    .metric b { display: inline-block; margin-right: 8px; font: 500 clamp(26px, 3vw, 38px)/1 "Playfair Display", serif; color: var(--violet-deep); }
+    .metric span { display: inline; color: var(--faint); font: 9px/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    section.block { padding: clamp(74px, 9vw, 128px) 0; }
+    .wrap { max-width: 1100px; }
+    .sec-head { border: 0; padding-bottom: 0; align-items: center; }
+    .sec-head h2 { letter-spacing: -.045em; }
+    .sec-head .num { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--violet); color: #fff; }
+    .proj { display: grid; gap: 14px; border: 0; }
+    .proj-row { grid-template-columns: 78px 1fr; gap: 14px 28px; padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    .proj-row .stack { grid-column: 2; padding-top: 4px; }
+    .proj-row::before { left: 0; border-radius: 16px 0 0 16px; }
+    .out-item:hover, .tl-item:hover { background: #fff5f2; }
+    .notes-col, .contact-grid { padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.75); }
+    footer { max-width: 1100px; }
+    @media (max-width: 980px) {
+      body { padding-left: 0; }
+      header { position: sticky; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .nav { height: auto; padding: 14px 22px; flex-direction: row; align-items: center; justify-content: space-between; gap: 20px; }
+      .nav-links { flex-direction: row; align-items: center; gap: 18px; }
+      .hero { width: 100%; min-height: 0; padding: 52px 32px; grid-template-columns: 1fr; }
+      .rail-l, .rail-r, .figure { grid-column: 1; grid-row: auto; }
+      .figure { order: -1; }
+      .rail-r { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .hero { padding: 46px 22px; }
+      .hero-title h1 { font-size: 52px; }
+      .hero-metrics { gap: 20px; }
+      .metric { min-width: 0; }
+      .proj-row { padding: 22px; }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -500,11 +580,11 @@
     "alternateName": ["Victor Bu", "Xinzhe Bu", "ぼく しんてつ", "ボク シンテツ"],
     "url": "https://shintbokuf.github.io/",
     "image": "https://shintbokuf.github.io/og-card.png",
-    "jobTitle": "AI Cloud Solution Engineer",
-    "description": "Cloud & AI engineer at Sojitz Tech-Innovation, building AI agents and RAG systems on Azure. Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets.",
+    "jobTitle": "AI Consultant",
+    "description": "Gen AI consultant at Mitsubishi Research Institute (MRI). Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets.",
     "worksFor": {
       "@type": "Organization",
-      "name": "Sojitz Tech-Innovation Co., Ltd."
+      "name": "Mitsubishi Research Institute, Inc."
     },
     "affiliation": {
       "@type": "CollegeOrUniversity",
@@ -568,10 +648,15 @@
   <!-- ══════════ HERO ══════════ -->
   <main class="hero" id="top">
     <div class="rail rail-l" id="railL">
+      <div class="hero-title">
+        <p class="eyebrow">AI consultant · researcher</p>
+        <h1>AI <em>×</em><br>Sociology.</h1>
+        <p>Consulting on AI systems; researching labour, migration, and inequality.</p>
+      </div>
       <a class="node" href="#career">
         <div class="txt">
           <p class="k">Now</p>
-          <p class="v">Cloud &amp; AI Engineer<small>Sojitz Tech-Innovation</small></p>
+          <p class="v">Gen AI Consultant<small>Mitsubishi Research Institute (MRI)</small></p>
         </div>
         <span class="lead"></span>
       </a>
@@ -588,6 +673,9 @@
       <!-- the official figure, traced to vector — each facet animates in -->
       <div class="scholar" id="scholar">
         <div class="tilt" id="tilt">
+          <div class="portrait-frame">
+            <img class="portrait-photo" src="hero-portrait.png" alt="Victor Bu" />
+          </div>
   <svg viewBox="50 0 403 498" fill-rule="evenodd" stroke-width="0.9" stroke-linejoin="round" role="img" aria-label="Low-poly illustration of a scholar, sitting and thinking">
     <path class="pc" fill="#dcbaa3" stroke="#dcbaa3" d="M220.0,58.3 179.0,73.3 201.3,117.3 203.3,118.0 206.3,115.0 215.7,115.0 277.0,122.7 278.0,125.7 276.0,133.0 266.3,142.7 268.3,147.3 267.0,153.7 263.0,156.3 259.7,156.0 256.0,153.0 251.3,156.3 248.7,155.7 249.0,161.0 246.7,169.0 247.3,172.7 245.3,175.7 251.0,182.7 259.7,199.0 232.3,202.3 199.7,191.0 198.3,192.3 197.0,210.0 240.3,218.7 241.0,221.0 236.0,232.3 248.7,240.7 254.0,242.0 270.7,233.7 267.0,233.7 246.0,221.3 242.7,221.0 242.0,219.3 258.3,211.0 261.3,206.3 277.7,151.7 288.7,121.0 288.0,117.3 291.7,90.7 269.3,63.0 268.0,63.7 264.3,79.7 262.0,81.3 224.0,59.3Z" style="--d:949ms;--ox:-0.8px;--oy:6.1px;--hx:-0.3px;--hy:-3.5px" />
     <path class="pc" fill="#e4e4e4" stroke="#e4e4e4" d="M53.7,478.0 175.0,497.7 181.3,495.7 444.3,473.7 448.0,471.7 404.7,454.7 403.7,472.0 402.3,473.3 372.0,473.7 369.3,472.0 368.3,463.0 354.0,462.0 353.0,452.3 245.7,450.3 244.3,459.0 242.3,462.7 227.3,463.3 225.3,480.0 179.3,480.0 178.7,487.0 177.0,488.7 123.7,488.3 122.7,478.7 126.0,461.7Z" style="--d:147ms;--ox:1.1px;--oy:22.8px;--hx:0.5px;--hy:6.3px" />
@@ -668,6 +756,11 @@
       <div class="fig-name">
         <p class="kana">Boku Shintetsu · ぼく しんてつ</p>
       </div>
+      <svg class="fluid-lines" viewBox="0 0 340 420" aria-hidden="true">
+        <path d="M18 76C89 5 180 16 221 86c38 65 9 143 92 177" />
+        <path d="M-1 143c99-44 173 16 182 84 8 58 45 90 141 96" />
+        <path d="M29 346c48-92 158-89 230-34 31 24 53 33 81 31" />
+      </svg>
     </div>
 
     <div class="rail rail-r" id="railR">
@@ -700,6 +793,11 @@
 
     <div class="cue">
       <a href="#work"><span class="bar"></span><span class="t">Selected Work ↓</span></a>
+    </div>
+
+    <div class="hero-metrics" aria-label="Experience highlights">
+      <div class="metric"><b>05+</b><span>Years researching migration &amp; labour</span></div>
+      <div class="metric"><b>02</b><span>Years building AI in industry</span></div>
     </div>
   </main>
 
