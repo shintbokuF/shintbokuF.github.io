@@ -28,7 +28,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
   <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
 
   <style>
@@ -527,6 +527,11 @@
     .hero-title .eyebrow { font-family: var(--mono); color: var(--violet); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
     .hero-title h1 { margin-top: 10px; font: 500 clamp(48px, 6.2vw, 86px)/.92 "Playfair Display", "Noto Serif JP", serif; letter-spacing: -.055em; }
     .hero-title h1 em { color: var(--violet); font-style: italic; }
+    .hero-title h1 .hand-accent {
+      text-decoration-line: underline; text-decoration-style: wavy;
+      text-decoration-color: var(--violet); text-decoration-thickness: 2.5px;
+      text-underline-offset: 10px;
+    }
     .hero-title p { max-width: 43ch; margin-top: 21px; color: var(--muted); font-size: 14px; }
     .figure { grid-column: 2; grid-row: 1 / span 2; position: relative; align-self: center; }
     .fluid-lines { position: absolute; z-index: -1; width: 126%; height: 126%; left: -14%; top: -12%; overflow: visible; pointer-events: none; }
@@ -534,6 +539,15 @@
     .scholar { width: min(100%, 250px); }
     .portrait-frame { border-radius: 44% 44% 39% 39% / 26% 26% 16% 16%; box-shadow: 22px 24px 0 #f5d9d3, 0 24px 44px rgba(128,48,38,.16); }
     .portrait-frame::before { width: 19%; right: -3%; top: 9%; box-shadow: -242px 333px 0 -7px #efad9f; }
+    .poster-note {
+      position: absolute; top: -34px; right: -6px; z-index: 3;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 2px; pointer-events: none;
+    }
+    .poster-note-text {
+      font-family: 'Caveat', cursive; font-weight: 600; font-size: 22px; line-height: 1;
+      color: var(--violet-deep); transform: rotate(-4deg); white-space: nowrap;
+    }
+    @media (max-width: 980px) { .poster-note { display: none; } }
     .portrait-frame::after { width: 8%; left: -5%; top: 23%; }
     .fig-name { margin-top: 13px; padding: 7px 12px; background: #fff; border: 1px solid var(--line); border-radius: 999px; }
     .lede { display: none; }
@@ -650,7 +664,7 @@
     <div class="rail rail-l" id="railL">
       <div class="hero-title">
         <p class="eyebrow">AI consultant · researcher</p>
-        <h1>AI <em>×</em><br>Sociology.</h1>
+        <h1>AI <em>×</em><br><span class="hand-accent">Sociology</span>.</h1>
         <p>Consulting on AI systems; researching labour, migration, and inequality.</p>
       </div>
       <a class="node" href="#career">
@@ -672,6 +686,13 @@
     <div class="figure">
       <!-- the official figure, traced to vector — each facet animates in -->
       <div class="scholar" id="scholar">
+        <div class="poster-note" aria-hidden="true">
+          <span class="poster-note-text">that's me</span>
+          <svg width="46" height="34" viewBox="0 0 46 34" fill="none">
+            <path d="M40 4 Q 16 4 11 26" stroke="var(--violet)" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M19 20 L10 27 L22 29" stroke="var(--violet)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
         <div class="tilt" id="tilt">
           <div class="portrait-frame">
             <img class="portrait-photo" src="hero-portrait.png" alt="BU Xinzhe" />
