@@ -159,7 +159,7 @@
     }
     .portrait-frame::before { width: 18%; aspect-ratio: 1; right: 8%; top: 12%; box-shadow: -160px 254px 0 -5px #ee9b8d; }
     .portrait-frame::after { width: 8%; aspect-ratio: 1; left: 9%; top: 27%; background: #f2b8ad; }
-    .portrait-photo { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; }
+    .portrait-sketch { width: 100%; height: 100%; display: block; box-sizing: border-box; padding: 15%; }
 
     /* each facet is its own path — it flies in, then drifts on hover */
     .js .scholar .pc {
@@ -674,7 +674,19 @@
       <div class="scholar" id="scholar">
         <div class="tilt" id="tilt">
           <div class="portrait-frame">
-            <img class="portrait-photo" src="hero-portrait.png" alt="BU Xinzhe" />
+            <svg class="portrait-sketch" viewBox="0 0 200 254" fill="none" stroke="var(--violet-deep)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Simple line drawing of a person sitting and thinking">
+              <path d="M28 246 C 30 178 54 150 100 150 C 146 150 170 178 172 246" />
+              <circle cx="100" cy="88" r="38" />
+              <path d="M66 66 C 72 46 128 46 134 66" />
+              <path d="M70 58 C 74 50 80 46 88 44" />
+              <path d="M62 92 c -6 2 -6 12 0 14" />
+              <path d="M138 92 c 6 2 6 12 0 14" />
+              <circle cx="86" cy="88" r="2.6" fill="var(--violet-deep)" stroke="none" />
+              <circle cx="114" cy="88" r="2.6" fill="var(--violet-deep)" stroke="none" />
+              <path d="M90 104 Q 100 110 110 104" />
+              <path d="M150 168 C 132 150 122 128 112 110" />
+              <path d="M104 108 c 4 -4 10 -4 14 0" />
+            </svg>
           </div>
   <svg viewBox="50 0 403 498" fill-rule="evenodd" stroke-width="0.9" stroke-linejoin="round" role="img" aria-label="Low-poly illustration of a scholar, sitting and thinking">
     <path class="pc" fill="#dcbaa3" stroke="#dcbaa3" d="M220.0,58.3 179.0,73.3 201.3,117.3 203.3,118.0 206.3,115.0 215.7,115.0 277.0,122.7 278.0,125.7 276.0,133.0 266.3,142.7 268.3,147.3 267.0,153.7 263.0,156.3 259.7,156.0 256.0,153.0 251.3,156.3 248.7,155.7 249.0,161.0 246.7,169.0 247.3,172.7 245.3,175.7 251.0,182.7 259.7,199.0 232.3,202.3 199.7,191.0 198.3,192.3 197.0,210.0 240.3,218.7 241.0,221.0 236.0,232.3 248.7,240.7 254.0,242.0 270.7,233.7 267.0,233.7 246.0,221.3 242.7,221.0 242.0,219.3 258.3,211.0 261.3,206.3 277.7,151.7 288.7,121.0 288.0,117.3 291.7,90.7 269.3,63.0 268.0,63.7 264.3,79.7 262.0,81.3 224.0,59.3Z" style="--d:949ms;--ox:-0.8px;--oy:6.1px;--hx:-0.3px;--hy:-3.5px" />
