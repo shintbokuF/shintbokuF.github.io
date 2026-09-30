@@ -162,7 +162,7 @@
     .btn.ghost { background: var(--card); color: var(--ink); box-shadow: 0 0 0 1px var(--hair) inset; }
     .btn.ghost:hover { color: var(--accent-deep); }
 
-    /* — mark: a vermilion seal with the surname, plus a vertical line of text — */
+    /* — mark: halftone rainbow sphere — */
     .figure { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 3vw, 34px); }
     .mark { position: relative; width: min(100%, 290px); aspect-ratio: 1; flex: none; }
     .js .mark { animation: float 7.5s ease-in-out infinite; }
@@ -170,30 +170,26 @@
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-8px); }
     }
+    /* halftone sphere: a rainbow gradient seen through a dot screen */
     .seal {
       position: relative; width: 100%; height: 100%; border-radius: 50%;
-      display: grid; place-items: center;
-      background: radial-gradient(circle at 32% 28%, #d9664f, var(--accent) 45%, var(--accent-deep));
-      box-shadow: 0 40px 70px -30px rgba(156,59,42,.55);
+      background: linear-gradient(135deg, #2b1f7a 18%, #1f4fbf 30%, #0e8f8a 42%, #5a9e2a 53%, #e0a01c 63%, #d9482f 74%, #7a1f3d 86%);
+      background-size: 110% 110%;
+      -webkit-mask-image:
+        radial-gradient(circle, #000 42%, transparent 46%),
+        radial-gradient(circle, #000 52%, rgba(0,0,0,.35) 68%, transparent 71%);
+      -webkit-mask-size: 13px 13px, 100% 100%;
+      -webkit-mask-composite: source-in;
+      mask-image:
+        radial-gradient(circle, #000 42%, transparent 46%),
+        radial-gradient(circle, #000 52%, rgba(0,0,0,.35) 68%, transparent 71%);
+      mask-size: 13px 13px, 100% 100%;
+      mask-composite: intersect;
       transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
       transition: transform .5s var(--ease);
     }
-    .seal span {
-      font: 700 clamp(110px, 13vw, 170px)/1 "Noto Serif JP", serif;
-      color: #fff; transform: translateY(-4%);
-    }
-    .seal::after {
-      /* a small companion moon */
-      content: ""; position: absolute; width: 17%; aspect-ratio: 1; border-radius: 50%;
-      left: -9%; bottom: 6%; background: var(--accent-soft);
-    }
-    .vert {
-      writing-mode: vertical-rl;
-      font: 500 15px/1.6 "Noto Serif JP", serif; letter-spacing: .35em; color: var(--ink);
-    }
-    .vert small {
-      display: block; margin-right: 14px; font-size: 11px; letter-spacing: .4em; color: var(--faint);
-    }
+    .js .seal { animation: drift 14s ease-in-out infinite alternate; }
+    @keyframes drift { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
 
     /* — identity facts: four quiet tiles — */
     .facts {
@@ -415,8 +411,6 @@
       .hero { padding-top: 24px; gap: 24px; }
       .figure { justify-content: flex-start; }
       .mark { width: 150px; }
-      .seal span { font-size: 90px; }
-      .vert { font-size: 13px; }
       .stats { display: grid; gap: 8px; }
       .stats i { display: none; }
       .facts { gap: 10px; }
@@ -531,9 +525,8 @@
 
     <div class="figure in-seq" style="--d:120ms" aria-hidden="true">
       <div class="mark" id="mark">
-        <div class="seal" id="seal"><span>卜</span></div>
+        <div class="seal" id="seal"></div>
       </div>
-      <p class="vert">技術と社会のあいだで<small>ぼく しんてつ</small></p>
     </div>
 
     <ul class="facts" aria-label="Highlights">
