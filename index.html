@@ -122,7 +122,7 @@
       max-width: 1080px; margin: 0 auto;
       padding: clamp(48px, 8vw, 110px) 32px clamp(56px, 7vw, 96px);
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       align-items: center;
       gap: clamp(32px, 5vw, 72px);
     }
@@ -194,8 +194,10 @@
     .stats b { color: var(--ink); font-weight: 400; }
 
     /* — Clawd stage: a rainbow mosaic hill with its residents — */
-    .figure { display: flex; justify-content: center; }
-    .stage { width: min(100%, 460px); aspect-ratio: 84 / 39; }
+    .figure { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .figure .cmd { margin-top: 26px; }
+    .figure .stats { justify-content: center; }
+    .stage { width: min(100%, 480px); aspect-ratio: 84 / 39; }
     .stage svg { width: 100%; height: 100%; display: block; overflow: visible; shape-rendering: crispEdges; }
     .stage .zz { font: 6px var(--pixel); fill: #9aa0a6; }
     .js .stage .zz { animation: zz 2.4s ease-in infinite; opacity: 0; }
@@ -411,8 +413,13 @@
     /* ══════════ responsive ══════════ */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; text-align: left; }
-      .figure { order: -1; }
       .stage { width: min(100%, 380px); }
+      /* phone/tablet order: Clawds → terminal → message → menu */
+      .figure { display: contents; }
+      .stage { order: -1; justify-self: center; }
+      .figure .cmd { order: 1; margin-top: 0; justify-self: start; }
+      .figure .stats { order: 1; justify-content: flex-start; margin-top: -12px; }
+      .facts { order: 2; }
       .facts { grid-template-columns: 1fr 1fr; }
       .proj-row { grid-template-columns: 1fr; }
       .notes, .contact-grid { grid-template-columns: 1fr; }
@@ -555,17 +562,17 @@
         <span class="more" aria-hidden="true">▼</span>
       </div>
 
-      <nav class="cmd in-seq" style="--d:200ms" aria-label="Quick links">
+    </div>
+
+    <div class="figure in-seq" style="--d:120ms">
+      <div class="stage" id="stage" role="img" aria-label="Pixel Clawd characters lounging on a rainbow mosaic hill"></div>
+      <nav class="cmd" aria-label="Quick links">
         <a href="#work">Selected Work</a>
         <a href="https://zenn.dev/snboku" target="_blank" rel="noopener">Zenn ↗</a>
         <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener">researchmap ↗</a>
       </nav>
 
-      <p class="stats in-seq" style="--d:260ms"><span>研究 <b>Lv.5+</b> migration &amp; labour</span><span>AI <b>Lv.2</b> building in industry</span></p>
-    </div>
-
-    <div class="figure in-seq" style="--d:120ms">
-      <div class="stage" id="stage" role="img" aria-label="Pixel Clawd characters lounging on a rainbow mosaic hill"></div>
+      <p class="stats"><span>研究 <b>Lv.5+</b> migration &amp; labour</span><span>AI <b>Lv.2</b> building in industry</span></p>
     </div>
 
     <ul class="facts" aria-label="Highlights">
