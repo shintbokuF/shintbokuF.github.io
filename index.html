@@ -216,6 +216,12 @@
     }
     .stage .walker { transform-box: fill-box; transform-origin: center; }
 
+    /* — light "message window": the DQ frame, inverted for reading — */
+    .win {
+      background: #fff; border: 3px solid var(--ink); border-radius: 10px;
+      box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 5px var(--ink), 6px 6px 0 rgba(29,28,32,.08);
+    }
+
     /* — identity facts: four quiet tiles — */
     .facts {
       grid-column: 1 / -1; list-style: none;
@@ -223,12 +229,10 @@
       margin-top: clamp(8px, 2vw, 24px);
     }
     .fact {
-      display: block; height: 100%; padding: 18px 20px; border-radius: 14px;
-      background: var(--card); text-decoration: none; color: inherit;
-      box-shadow: 0 1px 2px rgba(29,28,32,.04), 0 10px 30px -18px rgba(29,28,32,.18);
-      transition: transform .3s var(--ease), box-shadow .3s ease;
+      display: block; height: 100%; padding: 18px 20px; text-decoration: none; color: inherit;
+      transition: transform .2s steps(2), box-shadow .2s steps(2);
     }
-    .fact:hover { transform: translateY(-3px); box-shadow: 0 1px 2px rgba(29,28,32,.04), 0 18px 36px -18px rgba(156,59,42,.35); }
+    .fact:hover { transform: translate(-2px, -2px); box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 5px var(--ink), 8px 8px 0 #d97757; }
     .fact:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     .fact .k { font-family: var(--pixel); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-deep); }
     .fact .v { margin-top: 6px; font-size: 15px; font-weight: 700; line-height: 1.4; }
@@ -243,8 +247,23 @@
     section.block.appendix { padding: clamp(48px, 6vw, 80px) 0; }
     section.tint { background: var(--tint); }
 
-    .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: clamp(28px, 4vw, 48px); }
-    .sec-head .num { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; flex: none; }
+    .sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 6px 16px; margin-bottom: clamp(28px, 4vw, 48px); }
+    .sec-head .cd { flex-basis: 100%; font: 13px/1 var(--code); color: #1a7f37; }
+    .sec-head .cd b { font-weight: 400; color: #0969da; }
+    /* one sprite pixel = --u, so every pose keeps the same scale */
+    .sec-head .pet { --u: 5px; flex: none; margin-bottom: 6px; }
+    .sec-head .pet svg { display: block; shape-rendering: crispEdges; overflow: visible; }
+    .js .sec-head .pet.walk svg { animation: pace 6s linear infinite; }
+    @keyframes pace {
+      0%   { transform: translateX(0) scaleX(1); }
+      49%  { transform: translateX(36px) scaleX(1); }
+      50%  { transform: translateX(36px) scaleX(-1); }
+      99%  { transform: translateX(0) scaleX(-1); }
+      100% { transform: translateX(0) scaleX(1); }
+    }
+    .sec-head .pet.walk { width: 90px; }
+    .js .sec-head .pet.hop svg { animation: hop 1.1s cubic-bezier(.3,0,.5,1) infinite; }
+    .sec-head .num { align-self: center; font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; flex: none; }
     .sec-head .num::before {
       /* a four-tile mosaic chip */
       content: ""; display: inline-block; width: 5px; height: 5px; margin-right: 16px; vertical-align: 5px;
@@ -259,7 +278,7 @@
     .sec-head .jp {
       font-family: "Noto Serif JP", serif; font-weight: 500;
       font-size: 12.5px; letter-spacing: .24em; color: var(--faint);
-      margin-left: auto; flex: none;
+      margin-left: auto; flex: none; align-self: center;
     }
 
     /* animation is progressive: content is visible by default, and only
@@ -272,11 +291,9 @@
     .proj-row {
       display: grid; grid-template-columns: 1fr minmax(0, 250px);
       gap: 18px clamp(24px, 4vw, 48px); align-items: start;
-      padding: clamp(24px, 3.4vw, 36px); border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: 0 1px 2px rgba(29,28,32,.04), 0 16px 40px -28px rgba(29,28,32,.25);
+      padding: clamp(26px, 3.6vw, 38px);
     }
-    .proj-row .yr { grid-column: 1 / -1; font-family: var(--mono); font-size: 11.5px; color: var(--faint); letter-spacing: .08em; }
+    .proj-row .yr { grid-column: 1 / -1; font-family: var(--pixel); font-size: 11.5px; color: var(--faint); letter-spacing: .08em; }
     .proj-row h3 { font-size: clamp(19px, 2.4vw, 24px); font-weight: 700; line-height: 1.35; }
     .proj-row h3 .en {
       display: block; font-family: var(--serif); font-style: italic;
@@ -285,7 +302,7 @@
     .proj-row .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .proj-row .meta span {
       font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--accent-deep); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px;
+      color: var(--accent-deep); background: var(--accent-soft); padding: 4px 10px; border-radius: 3px;
     }
     .proj-row .meta span.live::before {
       content: ""; display: inline-block; width: 5px; height: 5px;
@@ -294,22 +311,23 @@
     .js .proj-row .meta span.live::before { animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
     .proj-row p { color: var(--muted); font-size: 14.5px; margin-top: 14px; max-width: 62ch; }
-    .proj-row .stack { padding: 16px 18px; border-radius: 12px; background: var(--soft); }
-    .proj-row .stack .lbl {
-      font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--faint); display: block; margin-bottom: 8px;
-    }
+    /* the stack box is a tiny terminal: $ cat stack.txt */
+    .proj-row .stack { padding: 14px 16px 16px; border-radius: 8px; background: #0d1016; font-family: var(--code); }
+    .proj-row .stack .lbl { display: block; margin-bottom: 8px; font-size: 12px; color: #7ee787; text-transform: lowercase; }
+    .proj-row .stack .lbl::before { content: "$ cat "; }
+    .proj-row .stack .lbl::after { content: ".txt"; }
     .proj-row .stack ul { list-style: none; display: grid; gap: 5px; }
-    .proj-row .stack li { font-size: 13px; color: var(--muted); }
+    .proj-row .stack li { font-size: 12px; line-height: 1.6; color: #c9d1d9; }
 
     /* — research output — */
     .out-group + .out-group { margin-top: clamp(34px, 4.4vw, 52px); }
     .out-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-    .out-head h3 { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-deep); }
+    .out-head h3 { font-family: var(--pixel); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-deep); }
     .out-head .cnt {
       font-family: var(--mono); font-size: 10.5px; color: var(--accent-deep);
-      background: var(--accent-soft); border-radius: 999px; padding: 1px 8px;
+      background: var(--accent-soft); border-radius: 3px; padding: 1px 8px;
     }
+    .out-head .cnt::before { content: "×"; }
     .out-list { list-style: none; }
     .out-item {
       display: grid; grid-template-columns: 74px 1fr; gap: 18px;
@@ -325,48 +343,49 @@
     .out-item .badge {
       display: inline-block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em;
       text-transform: uppercase; color: var(--accent-deep); background: var(--accent-soft);
-      padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: 2px;
+      padding: 2px 8px; border-radius: 3px; margin-left: 8px; vertical-align: 2px;
     }
     .out-more { margin-top: 26px; }
     .out-more a {
       display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
-      padding: 10px 20px; border-radius: 999px; background: var(--card);
-      font-size: 13px; font-weight: 700; color: var(--accent-deep);
-      box-shadow: 0 0 0 1px var(--hair) inset; transition: color .25s ease, transform .25s var(--ease);
+      padding: 10px 20px 10px 34px; position: relative; border-radius: 8px; background: #000;
+      font: 14px var(--pixel); color: #fff;
+      border: 3px solid #fff; box-shadow: 0 0 0 3px #000, inset 0 0 0 2px #000, inset 0 0 0 4px #fff;
     }
-    .out-more a:hover { color: var(--ink); transform: translateY(-2px); }
+    .out-more a::before { content: "▶"; position: absolute; left: 14px; font-size: 11px; }
+    .js .out-more a::before { animation: blink 1s steps(1) infinite; }
 
     /* — timeline (logos carry the rhythm; no connector lines) — */
     .tl-group { scroll-margin-top: 84px; }
     .tl-group + .tl-group { margin-top: clamp(36px, 4.6vw, 54px); }
-    .tl-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 18px; }
+    .tl-kicker { font-family: var(--pixel); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 18px; }
     .tl-item { display: grid; grid-template-columns: 48px 1fr; gap: 18px; }
     .tl-item + .tl-item { margin-top: 24px; }
     /* logos are served from this repo, not hotlinked from Wikipedia */
     .tl-logo {
-      width: 48px; height: 48px; border-radius: 12px; object-fit: contain; padding: 7px;
-      background: var(--card); box-shadow: 0 1px 2px rgba(29,28,32,.06), 0 6px 16px -8px rgba(29,28,32,.2);
+      width: 48px; height: 48px; border-radius: 6px; object-fit: contain; padding: 6px;
+      background: #fff; border: 2px solid var(--ink); box-shadow: 3px 3px 0 rgba(29,28,32,.12);
     }
     .tl-item h3 { font-size: 16.5px; font-weight: 700; line-height: 1.5; }
     .tl-item .role { color: var(--accent-deep); font-weight: 700; font-size: 14px; margin-top: 2px; }
-    .tl-item .date { font-family: var(--mono); font-size: 11.5px; color: var(--faint); letter-spacing: .06em; margin-top: 4px; }
+    .tl-item .date { font-family: var(--code); font-size: 11.5px; color: var(--faint); letter-spacing: .06em; margin-top: 4px; }
     .tl-item p { color: var(--muted); font-size: 14.5px; margin-top: 10px; max-width: 62ch; }
     .tl-item .tag { display: inline-block; margin-top: 8px; font-size: 13.5px; color: var(--accent-deep); }
     .tl-list { list-style: none; margin-top: 12px; display: grid; gap: 8px; max-width: 62ch; }
     .tl-list li { position: relative; padding-left: 18px; color: var(--muted); font-size: 14.5px; }
-    .tl-list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+    .tl-list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 5px; height: 5px; background: var(--accent); }
 
     /* — profile notes — */
     .notes { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; }
-    .notes-col { padding: 26px; border-radius: var(--radius); background: var(--card); box-shadow: 0 1px 2px rgba(29,28,32,.04), 0 16px 40px -28px rgba(29,28,32,.25); }
+    .notes-col { padding: 28px; }
     .notes-col h3 {
-      font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      font-family: var(--pixel); font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
       color: var(--accent-deep); margin-bottom: 16px;
     }
     .pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill {
       display: inline-flex; align-items: center; gap: 7px;
-      padding: 7px 13px; border-radius: 999px; font-size: 13px; font-weight: 500;
+      padding: 6px 12px; border-radius: 4px; font-size: 13px; font-weight: 500;
       background: var(--soft); color: var(--ink);
       transition: color .22s ease, transform .22s var(--ease);
     }
@@ -384,28 +403,29 @@
     .contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
     .contact-lead p { color: var(--muted); font-size: 15px; max-width: 42ch; }
     .contact-lead .sig-en { height: 38px; width: auto; display: block; margin-top: 26px; opacity: .85; }
-    form.contact { display: grid; gap: 16px; padding: 28px; border-radius: var(--radius); background: var(--card); box-shadow: 0 16px 40px -28px rgba(29,28,32,.25); }
-    form.contact label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+    form.contact { display: grid; gap: 16px; padding: 30px; }
+    form.contact label { font-family: var(--pixel); font-size: 13px; letter-spacing: .06em; color: var(--muted); }
     form.contact input, form.contact textarea {
       width: 100%; margin-top: 8px; padding: 12px 14px; font: inherit; font-size: 15px;
-      color: var(--ink); background: var(--soft); border: 1px solid transparent; border-radius: 10px;
+      color: var(--ink); background: #fff; border: 2px solid var(--ink); border-radius: 6px;
       transition: border-color .25s ease, background .25s ease;
     }
-    form.contact input:focus, form.contact textarea:focus { outline: none; border-color: var(--accent); background: #fff; }
+    form.contact input:focus, form.contact textarea:focus { outline: none; border-color: #d97757; box-shadow: 3px 3px 0 #d97757; }
     form.contact textarea { resize: vertical; min-height: 120px; }
     form.contact button {
       justify-self: start; margin-top: 4px;
-      background: var(--ink); color: #fff; border: none; cursor: pointer;
-      padding: 13px 32px; border-radius: 999px;
-      font-family: inherit; font-size: 13.5px; font-weight: 700; letter-spacing: .06em;
-      transition: background .25s ease, transform .25s var(--ease);
+      position: relative; background: #000; color: #fff; cursor: pointer;
+      padding: 12px 28px 12px 40px; border-radius: 8px;
+      border: 3px solid #fff; box-shadow: 0 0 0 3px #000, inset 0 0 0 2px #000, inset 0 0 0 4px #fff;
+      font: 15px var(--pixel); letter-spacing: .06em;
     }
-    form.contact button:hover { background: var(--accent-deep); transform: translateY(-2px); }
+    form.contact button::before { content: "▶"; position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 11px; }
+    .js form.contact button::before { animation: blink 1s steps(1) infinite; }
 
     footer {
       max-width: 1080px; margin: 0 auto; padding: 32px 32px 48px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-      font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--faint);
+      font-family: var(--code); font-size: 11px; letter-spacing: .04em; color: var(--faint);
     }
     footer a { color: var(--faint); text-decoration: none; }
     footer a:hover { color: var(--accent-deep); }
@@ -454,6 +474,7 @@
       .fact .v { font-size: 14px; }
       .sec-head { flex-wrap: wrap; gap: 8px 14px; }
       .sec-head .jp { margin-left: 0; width: 100%; }
+      .sec-head .pet { --u: 3.5px; }
       .out-item { grid-template-columns: 1fr; gap: 4px; }
       .out-item .d { padding-top: 0; }
       .proj-row, .notes-col, form.contact { padding: 22px 20px; }
@@ -576,19 +597,19 @@
     </div>
 
     <ul class="facts" aria-label="Highlights">
-      <li class="in-seq" style="--d:380ms"><a class="fact" href="#career">
+      <li class="in-seq" style="--d:380ms"><a class="fact win" href="#career">
         <p class="k">Now</p>
         <p class="v">Gen AI Consultant<small>Mitsubishi Research Institute (MRI)</small></p>
       </a></li>
-      <li class="in-seq" style="--d:440ms"><a class="fact" href="#education">
+      <li class="in-seq" style="--d:440ms"><a class="fact win" href="#education">
         <p class="k">Research</p>
         <p class="v">Ph.D. Candidate<small>The University of Tokyo</small></p>
       </a></li>
-      <li class="in-seq" style="--d:500ms"><a class="fact" href="#work">
+      <li class="in-seq" style="--d:500ms"><a class="fact win" href="#work">
         <p class="k">Building</p>
         <p class="v">AI Agents on Azure<small>Foundry · RAG · Full-stack</small></p>
       </a></li>
-      <li class="in-seq" style="--d:560ms"><a class="fact" href="#research">
+      <li class="in-seq" style="--d:560ms"><a class="fact win" href="#research">
         <p class="k">Studying</p>
         <p class="v">Labor &amp; Inequality<small>移民労働と仲介構造</small></p>
       </a></li>
@@ -598,14 +619,15 @@
   <!-- ══════════ 01 WORK (core) ══════════ -->
   <section class="block tint" id="work">
     <div class="wrap">
-      <div class="sec-head rv">
+      <div class="sec-head rv" data-pet="type">
+        <span class="cd">➜ <b>~/work</b></span>
         <span class="num">01</span>
         <h2>Selected Work</h2>
         <span class="jp">実績</span>
       </div>
 
       <div class="proj">
-        <article class="proj-row rv">
+        <article class="proj-row win rv">
           <p class="yr">2026 · Production</p>
           <div>
             <h3>AI ヘルプデスク基盤<span class="en">AI Helpdesk Platform</span></h3>
@@ -632,7 +654,7 @@
           </div>
         </article>
 
-        <article class="proj-row rv">
+        <article class="proj-row win rv">
           <p class="yr">2025 – 2026</p>
           <div>
             <h3>社内 RAG・資料生成システム<span class="en">Enterprise RAG &amp; Document Generation</span></h3>
@@ -661,7 +683,7 @@
           </div>
         </article>
 
-        <article class="proj-row rv">
+        <article class="proj-row win rv">
           <p class="yr">2026</p>
           <div>
             <h3>テックニュースダイジェスト<span class="en">Daily Tech Digest</span></h3>
@@ -691,7 +713,8 @@
   <!-- ══════════ 02 RESEARCH OUTPUT (core) ══════════ -->
   <section class="block" id="research">
     <div class="wrap">
-      <div class="sec-head rv">
+      <div class="sec-head rv" data-pet="read">
+        <span class="cd">➜ <b>~/research</b></span>
         <span class="num">02</span>
         <h2>Research Output</h2>
         <span class="jp">研究業績</span>
@@ -824,7 +847,8 @@
   <!-- ══════════ 03 EXPERIENCE (mid) ══════════ -->
   <section class="block mid tint" id="experience">
     <div class="wrap">
-      <div class="sec-head rv">
+      <div class="sec-head rv" data-pet="walk">
+        <span class="cd">➜ <b>~/experience</b></span>
         <span class="num">03</span>
         <h2>Experience</h2>
         <span class="jp">経歴</span>
@@ -893,14 +917,15 @@
   <!-- ══════════ 04 PROFILE NOTES (appendix) ══════════ -->
   <section class="block appendix" id="profile">
     <div class="wrap">
-      <div class="sec-head rv">
+      <div class="sec-head rv" data-pet="wave">
+        <span class="cd">➜ <b>~/profile</b></span>
         <span class="num">04</span>
         <h2>Profile Notes</h2>
         <span class="jp">スキル・資格・その他</span>
       </div>
 
       <div class="notes rv">
-        <div class="notes-col">
+        <div class="notes-col win">
           <h3>Skills</h3>
           <div class="pills">
             <span class="pill"><span class="iconify" data-icon="logos:microsoft-azure"></span>Azure</span>
@@ -918,7 +943,7 @@
           </div>
         </div>
 
-        <div class="notes-col">
+        <div class="notes-col win">
           <h3>Certifications</h3>
           <ul class="mini">
             <li>
@@ -946,7 +971,8 @@
   <!-- ══════════ CONTACT ══════════ -->
   <section class="block mid tint" id="contact">
     <div class="wrap">
-      <div class="sec-head rv">
+      <div class="sec-head rv" data-pet="mail">
+        <span class="cd">➜ <b>~/contact</b></span>
         <span class="num">—</span>
         <h2>Get in Touch</h2>
         <span class="jp">連絡先</span>
@@ -956,7 +982,7 @@
           <p>お仕事のご相談、研究に関するお問い合わせ、その他どんなことでもお気軽にどうぞ。フォームから送信いただければ、直接わたし宛てに届きます。</p>
           <img class="sig-en" src="sig-victor.png" alt="victor" />
         </div>
-        <form class="contact" action="https://formsubmit.co/shintboku@gmail.com" method="POST">
+        <form class="contact win" action="https://formsubmit.co/shintboku@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="【個人HP】新しいメッセージが届きました" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
@@ -1013,6 +1039,83 @@
     navLinks.addEventListener('click', e => { if (e.target.tagName === 'A') closeNav(); });
     addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    /* sprites: 12 wide; o = body, e = eye */
+    const R = {
+      top:  '.oooooooooo.', eyes: '.ooeooooeoo.', shut: '.oooooooooo.', arms: 'oooooooooooo',
+      belly:'.oooooooooo.', legs: '.o.o....o.o.', legs2:'..o.o..o.o..',
+      waveA:'.ooeooooeooo', waveTop:'.ooooooooooo', armL: 'ooooooooooo.',
+    };
+    const SP = {
+      stand:  [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs, R.legs],
+      blink:  [R.top, R.shut, R.eyes, R.arms, R.belly, R.legs, R.legs],
+      waveA:  [R.top, R.eyes, R.waveA, R.armL, R.belly, R.legs, R.legs],
+      waveB:  [R.waveTop, R.waveA, R.eyes, R.armL, R.belly, R.legs, R.legs],
+      hop:    [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs],
+      sit:    [R.top, R.eyes, R.eyes, R.arms, R.belly],
+      sleep:  [R.legs, R.legs, R.belly, R.arms, R.shut, R.eyes, R.top],   /* on its back, legs up */
+      walkA:  [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs, R.legs],
+      walkB:  [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs2, R.legs2],
+      /* k = laptop, s = screen, b = book cover, p = page, l = outline, w = paper */
+      typeA:  ['.oooooooooo.....', '.ooeooooeoo.kkkk', '.ooeooooeoo.kssk', 'ooooooooooookssk', '.oooooooooookkkk'],
+      typeB:  ['.oooooooooo.....', '.ooeooooeoookkkk', '.ooeooooeoo.kssk', 'ooooooooooo.kssk', '.oooooooooookkkk'],
+      readA:  [R.top, R.shut, R.eyes, 'obbbbbbbbbbo', '.bpppbbpppb.', '.bbbbbbbbbb.'],
+      readB:  [R.top, R.shut, R.eyes, 'obbbbbbbbbbo', '.bppppbbppb.', '.bbbbbbbbbb.'],
+      mail:   ['..llllllll..', '..lwlwwlwl..', '..lwwllwwl..', '.ollllllllo.', '.oooooooooo.', R.eyes, R.eyes, R.belly, R.legs, R.legs],
+    };
+    const INK = { o: '#d97757', e: '#141413', k: '#5b6270', s: '#9fd3ff', b: '#2b1f7a', p: '#ffffff', l: '#141413', w: '#ffffff' };
+    const paint = (rows, g) => rows.forEach((row, y) => {
+      for (let x = 0; x < row.length;) {
+        const c = row[x];
+        if (c === '.') { x++; continue; }
+        let w = 1; while (row[x + w] === c) w++;
+        const r = document.createElementNS(SVGNS, 'rect');
+        r.setAttribute('x', x); r.setAttribute('y', y); r.setAttribute('width', w); r.setAttribute('height', 1);
+        r.setAttribute('fill', INK[c]); g.appendChild(r);
+        x += w;
+      }
+    });
+    /* cycle a set of frame <g>s: [[sprite, ms], ...] */
+    const animate = (fg, frames) => {
+      fg.forEach((f, i) => f.style.display = i ? 'none' : '');
+      if (reduce || frames.length < 2) return;
+      let i = 0;
+      const step = () => {
+        fg[i].style.display = 'none'; i = (i + 1) % fg.length; fg[i].style.display = '';
+        setTimeout(step, frames[i][1]);
+      };
+      setTimeout(step, frames[0][1]);
+    };
+
+    /* ── a Clawd beside every section title ── */
+    const PETS = {
+      type: [['typeA', 240], ['typeB', 240]],
+      read: [['readA', 2400], ['readB', 280]],
+      walk: [['walkA', 260], ['walkB', 260]],
+      wave: [['waveA', 380], ['waveB', 380]],
+      mail: [['mail', 99999]],
+    };
+    document.querySelectorAll('.sec-head[data-pet]').forEach(head => {
+      const kind = head.dataset.pet, frames = PETS[kind];
+      const w = Math.max(...frames.map(([n]) => SP[n][0].length));
+      const h = Math.max(...frames.map(([n]) => SP[n].length));
+      const svg = document.createElementNS(SVGNS, 'svg');
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      svg.style.width = `calc(var(--u) * ${w})`; svg.style.height = `calc(var(--u) * ${h})`;
+      const fg = frames.map(([n]) => {
+        const g = document.createElementNS(SVGNS, 'g');
+        g.setAttribute('transform', `translate(0 ${h - SP[n].length})`);
+        paint(SP[n], g); svg.appendChild(g); return g;
+      });
+      animate(fg, frames);
+      const pet = document.createElement('span');
+      pet.className = 'pet ' + (kind === 'walk' ? 'walk' : kind === 'mail' ? 'hop' : '');
+      pet.setAttribute('aria-hidden', 'true');
+      pet.appendChild(svg);
+      head.querySelector('h2').after(pet);
+    });
+
+
     /* ── Clawd stage ──
        pixel sprites on a rainbow mosaic hill, drawn as one crisp SVG */
     (() => {
@@ -1028,46 +1131,12 @@
         parent.appendChild(n); return n;
       };
 
-      /* sprites: 12 wide; o = body, e = eye */
-      const R = {
-        top:  '.oooooooooo.', eyes: '.ooeooooeoo.', shut: '.oooooooooo.', arms: 'oooooooooooo',
-        belly:'.oooooooooo.', legs: '.o.o....o.o.', legs2:'..o.o..o.o..',
-        waveA:'.ooeooooeooo', waveTop:'.ooooooooooo', armL: 'ooooooooooo.',
-      };
-      const SP = {
-        stand:  [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs, R.legs],
-        blink:  [R.top, R.shut, R.eyes, R.arms, R.belly, R.legs, R.legs],
-        waveA:  [R.top, R.eyes, R.waveA, R.armL, R.belly, R.legs, R.legs],
-        waveB:  [R.waveTop, R.waveA, R.eyes, R.armL, R.belly, R.legs, R.legs],
-        hop:    [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs],
-        sit:    [R.top, R.eyes, R.eyes, R.arms, R.belly],
-        sleep:  [R.legs, R.legs, R.belly, R.arms, R.shut, R.eyes, R.top],   /* on its back, legs up */
-        walkA:  [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs, R.legs],
-        walkB:  [R.top, R.eyes, R.eyes, R.arms, R.belly, R.legs2, R.legs2],
-      };
-      const paint = (rows, g) => rows.forEach((row, y) => {
-        for (let x = 0; x < row.length;) {
-          const c = row[x];
-          if (c === '.') { x++; continue; }
-          let w = 1; while (row[x + w] === c) w++;
-          el('rect', { x, y, width: w, height: 1, fill: c === 'e' ? '#141413' : '#d97757' }, g);
-          x += w;
-        }
-      });
       /* a clawd cycles through frames: [[sprite, ms], ...] */
       const clawd = (x, y, frames, cls) => {
         const g = el('g', { transform: `translate(${x} ${y})` });
         const inner = el('g', cls ? { class: cls } : {}, g);
         const fg = frames.map(([name]) => { const f = el('g', {}, inner); paint(SP[name], f); return f; });
-        fg.forEach((f, i) => f.style.display = i ? 'none' : '');
-        if (!reduce && frames.length > 1) {
-          let i = 0;
-          const step = () => {
-            fg[i].style.display = 'none'; i = (i + 1) % fg.length; fg[i].style.display = '';
-            setTimeout(step, frames[i][1]);
-          };
-          setTimeout(step, frames[0][1]);
-        }
+        animate(fg, frames);
         return g;
       };
 
