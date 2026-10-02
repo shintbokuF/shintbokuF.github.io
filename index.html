@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BU Xinzhe | ぼく しんてつ</title>
   <meta name="description" content="BU Xinzhe (ぼく しんてつ) — Gen AI consultant at Mitsubishi Research Institute (MRI). Ph.D. candidate in sociology at the University of Tokyo, researching migrant labour markets." />
-  <link rel="icon" href="sig-bu.png" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="sig-bu.png" />
   <link rel="canonical" href="https://shintbokuf.github.io/" />
 
   <meta property="og:type" content="profile" />
@@ -94,7 +95,11 @@
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
     .brand { display: flex; align-items: center; text-decoration: none; flex: none; }
-    .brand img { height: 26px; width: auto; display: block; }
+    /* rainbow Clawd, winking — the site's mascot mark */
+    .brand-clawd { width: 48px; height: 28px; display: block; overflow: visible; transition: transform .2s steps(2); }
+    .brand:hover .brand-clawd { transform: translateY(-3px); }
+    .js .brand:hover .brand-clawd { animation: hue 1.6s linear infinite; }
+    @keyframes hue { to { filter: hue-rotate(360deg); } }
     .nav-links { display: flex; gap: 26px; align-items: center; }
     .nav-links a {
       font-size: 13px; font-weight: 500; letter-spacing: .04em;
@@ -545,7 +550,7 @@
   <header id="hdr">
     <nav class="nav">
       <a class="brand" href="#top" aria-label="BU Xinzhe — home">
-        <img src="sig-bu.png" alt="BU Xinzhe" />
+        <svg viewBox="0 0 12 7" shape-rendering="crispEdges" class="brand-clawd" role="img" aria-label="BU Xinzhe"><defs><linearGradient id="brandGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="12" y2="7"><stop offset="0" stop-color="#2b1f7a"/><stop offset=".2" stop-color="#1f4fbf"/><stop offset=".38" stop-color="#0e8f8a"/><stop offset=".54" stop-color="#5a9e2a"/><stop offset=".7" stop-color="#e0a01c"/><stop offset=".85" stop-color="#d9482f"/><stop offset="1" stop-color="#7a1f3d"/></linearGradient></defs><g fill="url(#brandGrad)"><rect x="1" y="0" width="10" height="1"/><rect x="1" y="1" width="2" height="1"/><rect x="4" y="1" width="4" height="1"/><rect x="9" y="1" width="2" height="1"/><rect x="1" y="2" width="2" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="0" y="3" width="12" height="1"/><rect x="1" y="4" width="10" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/></g><g fill="#141413"><rect x="3" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/><rect x="9" y="2" width="1" height="1"/></g></svg>
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#work">Work</a>
