@@ -29,7 +29,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=DotGothic16&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;600;700&family=DotGothic16&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
 
   <style>
@@ -108,6 +108,12 @@
     }
     .nav-links a:hover { color: var(--accent-deep); }
     .nav-links a.ext { color: var(--accent-deep); }
+    /* the door to the academic page */
+    .nav-links a.mode {
+      font-family: var(--pixel); color: #fff; background: #000;
+      padding: 5px 12px; border-radius: 6px; box-shadow: inset 0 0 0 2px #000, inset 0 0 0 3px #fff;
+    }
+    .nav-links a.mode:hover { color: #fff; background: var(--accent-deep); }
 
     .nav-toggle {
       display: none; background: none; border: none; cursor: pointer;
@@ -195,13 +201,10 @@
     .cmd a:focus-visible { outline: none; }
     .js .cmd a::before { animation: blink 1s steps(1) infinite; }
 
-    .stats { margin-top: 14px; font: 13px/1.6 var(--pixel); color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 22px; }
-    .stats b { color: var(--ink); font-weight: 400; }
 
     /* — Clawd stage: a rainbow mosaic hill with its residents — */
     .figure { display: flex; flex-direction: column; align-items: center; gap: 6px; }
     .figure .cmd { margin-top: 26px; }
-    .figure .stats { justify-content: center; }
     .stage { width: min(100%, 480px); aspect-ratio: 84 / 39; }
     .stage svg { width: 100%; height: 100%; display: block; overflow: visible; shape-rendering: crispEdges; }
     .stage .zz { font: 6px var(--pixel); fill: #9aa0a6; }
@@ -227,10 +230,11 @@
       box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 5px var(--ink), 6px 6px 0 rgba(29,28,32,.08);
     }
 
-    /* — identity facts: four quiet tiles — */
+
+    /* — identity facts: three tiles, work only — */
     .facts {
       grid-column: 1 / -1; list-style: none;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
       margin-top: clamp(8px, 2vw, 24px);
     }
     .fact {
@@ -301,8 +305,8 @@
     .proj-row .yr { grid-column: 1 / -1; font-family: var(--pixel); font-size: 11.5px; color: var(--faint); letter-spacing: .08em; }
     .proj-row h3 { font-size: clamp(19px, 2.4vw, 24px); font-weight: 700; line-height: 1.35; }
     .proj-row h3 .en {
-      display: block; font-family: var(--serif); font-style: italic;
-      font-weight: 500; font-size: 15px; color: var(--accent-deep); margin-top: 4px;
+      display: block; font-family: "Inter", "Noto Sans JP", sans-serif;
+      font-weight: 600; font-size: 15.5px; letter-spacing: -.01em; color: rgba(29,28,32,.42); margin-top: 6px;
     }
     .proj-row .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .proj-row .meta span {
@@ -324,42 +328,6 @@
     .proj-row .stack ul { list-style: none; display: grid; gap: 5px; }
     .proj-row .stack li { font-size: 12px; line-height: 1.6; color: #c9d1d9; }
 
-    /* — research output — */
-    .out-group + .out-group { margin-top: clamp(34px, 4.4vw, 52px); }
-    .out-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-    .out-head h3 { font-family: var(--pixel); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-deep); }
-    .out-head .cnt {
-      font-family: var(--mono); font-size: 10.5px; color: var(--accent-deep);
-      background: var(--accent-soft); border-radius: 3px; padding: 1px 8px;
-    }
-    .out-head .cnt::before { content: "×"; }
-    .out-list { list-style: none; }
-    .out-item {
-      display: grid; grid-template-columns: 74px 1fr; gap: 18px;
-      padding: 12px 14px; margin: 0 -14px; border-radius: 10px; transition: background .2s ease;
-    }
-    .out-item:hover { background: var(--soft); }
-    .out-item .d { font-family: var(--mono); font-size: 11.5px; color: var(--faint); letter-spacing: .04em; padding-top: 3px; }
-    .out-item .t { font-size: 14.5px; font-weight: 500; line-height: 1.6; }
-    .out-item .t a { color: inherit; text-decoration: underline; text-decoration-color: rgba(201,85,63,.35); text-underline-offset: 3px; }
-    .out-item .t a:hover { color: var(--accent-deep); text-decoration-color: var(--accent); }
-    .out-item .src { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
-    .out-item .src em { font-style: normal; color: var(--faint); }
-    .out-item .badge {
-      display: inline-block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--accent-deep); background: var(--accent-soft);
-      padding: 2px 8px; border-radius: 3px; margin-left: 8px; vertical-align: 2px;
-    }
-    .out-more { margin-top: 26px; }
-    .out-more a {
-      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
-      padding: 10px 20px 10px 34px; position: relative; border-radius: 8px; background: #000;
-      font: 14px var(--pixel); color: #fff;
-      border: 3px solid #fff; box-shadow: 0 0 0 3px #000, inset 0 0 0 2px #000, inset 0 0 0 4px #fff;
-    }
-    .out-more a::before { content: "▶"; position: absolute; left: 14px; font-size: 11px; }
-    .js .out-more a::before { animation: blink 1s steps(1) infinite; }
-
     /* — timeline (logos carry the rhythm; no connector lines) — */
     .tl-group { scroll-margin-top: 84px; }
     .tl-group + .tl-group { margin-top: clamp(36px, 4.6vw, 54px); }
@@ -371,6 +339,8 @@
       width: 48px; height: 48px; border-radius: 6px; object-fit: contain; padding: 6px;
       background: #fff; border: 2px solid var(--ink); box-shadow: 3px 3px 0 rgba(29,28,32,.12);
     }
+    /* the hero command menu, reused under the timeline and aligned with its text column */
+    .tl-cmd { margin: 28px 0 0 66px; }
     .tl-item h3 { font-size: 16.5px; font-weight: 700; line-height: 1.5; }
     .tl-item .role { color: var(--accent-deep); font-weight: 700; font-size: 14px; margin-top: 2px; }
     .tl-item .date { font-family: var(--code); font-size: 11.5px; color: var(--faint); letter-spacing: .06em; margin-top: 4px; }
@@ -443,9 +413,7 @@
       .figure { display: contents; }
       .stage { order: -1; justify-self: center; }
       .figure .cmd { order: 1; margin-top: 0; justify-self: start; }
-      .figure .stats { order: 1; justify-content: flex-start; margin-top: -12px; }
       .facts { order: 2; }
-      .facts { grid-template-columns: 1fr 1fr; }
       .proj-row { grid-template-columns: 1fr; }
       .notes, .contact-grid { grid-template-columns: 1fr; }
     }
@@ -465,6 +433,7 @@
       }
       .nav-links.open a { padding: 12px 0; font-size: 14px; }
       .nav-links.open a.sec { display: block; }
+      .nav-links.open a.mode { margin-top: 8px; padding: 12px 14px; text-align: center; }
     }
     @media (max-width: 620px) {
       .wrap, .hero, footer { padding-left: 20px; padding-right: 20px; }
@@ -474,14 +443,12 @@
       .dq { padding: 16px 18px 26px; }
       .dq p { font-size: 15px; }
       .cmd { display: flex; gap: 6px 22px; }
-      .facts { gap: 10px; }
+      .facts { grid-template-columns: 1fr; gap: 10px; }
       .fact { padding: 14px 15px; }
       .fact .v { font-size: 14px; }
       .sec-head { flex-wrap: wrap; gap: 8px 14px; }
       .sec-head .jp { margin-left: 0; width: 100%; }
       .sec-head .pet { --u: 3.5px; }
-      .out-item { grid-template-columns: 1fr; gap: 4px; }
-      .out-item .d { padding-top: 0; }
       .proj-row, .notes-col, form.contact { padding: 22px 20px; }
       footer { justify-content: flex-start; }
     }
@@ -507,7 +474,7 @@
     "worksFor": {
       "@type": "Organization",
       "name": "Mitsubishi Research Institute, Inc.",
-      "department": "AI Co-Creation Promotion Center"
+      "department": "AI共創推進センター"
     },
     "affiliation": {
       "@type": "CollegeOrUniversity",
@@ -555,12 +522,11 @@
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#work">Work</a>
-        <a href="#research">研究業績</a>
         <a href="#experience">経歴</a>
         <a href="#profile" class="sec">スキル・資格</a>
         <a href="#contact" class="sec">Contact</a>
-        <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener" class="ext sec">researchmap ↗</a>
         <a href="https://zenn.dev/snboku" target="_blank" rel="noopener" class="ext sec">Zenn ↗</a>
+        <a href="research/" class="mode">Research →</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
@@ -584,8 +550,8 @@
       </div>
 
       <div class="dq in-seq" style="--d:120ms" id="dq">
-        <p class="ja">＊「シンクタンクで、ローカル LLM の調査・導入と、社内の生成 AI 活用に関するコンサルティングに取り組んでいます。前職ではクラウドと AI を軸に、設計・実装・本番投入までを手がけました。研究では社会学の視点から、労働と格差の問題を追っています。」</p>
-        <p class="en">Advising on and bringing AI into organisations; studying labour and inequality in academia.</p>
+        <p class="ja">＊「シンクタンクで、ローカル LLM の調査・導入と、社内の生成 AI 活用に関するコンサルティングに取り組んでいます。前職ではクラウドと AI を軸に、設計・実装・本番投入までを手がけました。」</p>
+        <p class="en">Advising on AI and bringing it into real work — from model choice to production.</p>
         <span class="more" aria-hidden="true">▼</span>
       </div>
 
@@ -596,28 +562,22 @@
       <nav class="cmd" aria-label="Quick links">
         <a href="#work">Selected Work</a>
         <a href="https://zenn.dev/snboku" target="_blank" rel="noopener">Zenn ↗</a>
-        <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener">researchmap ↗</a>
+        <a href="research/">研究モードへ</a>
       </nav>
-
-      <p class="stats"><span>研究 <b>Lv.5+</b> migration &amp; labour</span><span>AI <b>Lv.2</b> building in industry</span></p>
     </div>
 
     <ul class="facts" aria-label="Highlights">
-      <li class="in-seq" style="--d:380ms"><a class="fact win" href="#career">
+      <li class="in-seq" style="--d:380ms"><a class="fact win" href="#work">
+        <p class="k">Core</p>
+        <p class="v">Azure × RAG × AI Agents<small>Microsoft Foundry · AI Search · 本番導入</small></p>
+      </a></li>
+      <li class="in-seq" style="--d:440ms"><a class="fact win" href="#career">
         <p class="k">Now</p>
         <p class="v">AI Consultant<small>MRI · AI共創推進センター</small></p>
-      </a></li>
-      <li class="in-seq" style="--d:440ms"><a class="fact win" href="#education">
-        <p class="k">Research</p>
-        <p class="v">Ph.D. Candidate<small>The University of Tokyo</small></p>
       </a></li>
       <li class="in-seq" style="--d:500ms"><a class="fact win" href="#career">
         <p class="k">Exploring</p>
         <p class="v">Local LLMs<small>選定・検証・社内導入</small></p>
-      </a></li>
-      <li class="in-seq" style="--d:560ms"><a class="fact win" href="#research">
-        <p class="k">Studying</p>
-        <p class="v">Labor &amp; Inequality<small>移民労働と仲介構造</small></p>
       </a></li>
     </ul>
   </main>
@@ -716,146 +676,12 @@
     </div>
   </section>
 
-  <!-- ══════════ 02 RESEARCH OUTPUT (core) ══════════ -->
-  <section class="block" id="research">
-    <div class="wrap">
-      <div class="sec-head rv" data-pet="read">
-        <span class="cd">➜ <b>~/research</b></span>
-        <span class="num">02</span>
-        <h2>Research Output</h2>
-        <span class="jp">研究業績</span>
-      </div>
-
-      <div class="out-group rv">
-        <div class="out-head">
-          <h3>論文 / Papers</h3>
-          <span class="cnt">3</span>
-        </div>
-        <ul class="out-list">
-          <li class="out-item">
-            <span class="d">2024.09</span>
-            <div>
-              <p class="t">「うつ病」は誰の責任か——『人民日報』におけるうつ病の帰責フレーム分析（2000–2020）<span class="badge">査読あり</span></p>
-              <p class="src">ソシオロゴス <em>Vol. 48, pp. 66–83</em></p>
-            </div>
-          </li>
-          <li class="out-item">
-            <span class="d">2025.02</span>
-            <div>
-              <p class="t">越境労働市場の形成と仲介者の役割——在日中国人派遣労働者を事例に</p>
-              <p class="src">東京大学 大学院学際情報学府 <em>修士論文</em></p>
-            </div>
-          </li>
-          <li class="out-item">
-            <span class="d">2022.02</span>
-            <div>
-              <p class="t">中国マスメディアにおけるうつ病の表象——『人民日報』の分析</p>
-              <p class="src">卒業論文</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="out-group rv">
-        <div class="out-head">
-          <h3>学会発表 / Presentations</h3>
-          <span class="cnt">5</span>
-        </div>
-        <ul class="out-list">
-          <li class="out-item">
-            <span class="d">2025.11</span>
-            <div>
-              <p class="t">「高度人材」の影にある現実——日本のIT業界における中国人派遣労働者の制度的ジレンマ</p>
-              <p class="src">日本社会学会大会 第98回</p>
-            </div>
-          </li>
-          <li class="out-item">
-            <span class="d">2024.03</span>
-            <div>
-              <p class="t">中国人のALPS処理水海洋放出と日本商品の消費に対する態度の研究——海洋放出から半年後のアンケート調査に基づいて</p>
-              <p class="src">東日本大震災・原子力災害 第2回 学術研究集会 <em>／ 卜新哲・開沼博</em></p>
-            </div>
-          </li>
-          <li class="out-item">
-            <span class="d">2024.03</span>
-            <div>
-              <p class="t">印象に残り、未来を考えるきっかけとなる展示とは?——東日本大震災・原子力災害伝承館への来館者を対象にした調査をとおして</p>
-              <p class="src">日本災害情報学会 第28回大会 <em>／ 卜新哲・石井晴音・葛西優香・開沼博</em></p>
-            </div>
-          </li>
-          <li class="out-item">
-            <span class="d">2023.12</span>
-            <div>
-              <p class="t">うつ病の責任は誰が持つべきか？『人民日報』におけるうつ病の帰責フレーム研究</p>
-              <p class="src">日中社会学会 2023年度冬季研究集会</p>
-            </div>
-          </li>
-          <li class="out-item">
-            <span class="d">2023.10</span>
-            <div>
-              <p class="t">ALPS処理水放出をめぐる中国のSNSにおけるネット世論の一調査</p>
-              <p class="src">日本災害情報学会 第27回大会 <em>／ 卜新哲・開沼博</em></p>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="out-group rv">
-        <div class="out-head">
-          <h3>メディア掲載 / Media</h3>
-          <span class="cnt">2</span>
-        </div>
-        <ul class="out-list">
-          <li class="out-item">
-            <span class="d">2023.12</span>
-            <div>
-              <p class="t"><a href="https://toyokeizai.net/articles/-/718539" target="_blank" rel="noopener">仕送りは500万円「リッチ中国人留学生」の実像——高学歴を「安く」「容易に」求める若者たち ↗</a></p>
-              <p class="src">東洋経済オンライン</p>
-            </div>
-          </li>
-          <li class="out-item">
-            <span class="d">2024.04</span>
-            <div>
-              <p class="t"><a href="https://www.iii.u-tokyo.ac.jp/research/20240408report" target="_blank" rel="noopener">福島芸術講活動報告会レポート ↗</a></p>
-              <p class="src">東京大学 大学院情報学環・学際情報学府</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="out-group rv">
-        <div class="out-head">
-          <h3>受賞・研究関心 / Awards &amp; Interests</h3>
-        </div>
-        <ul class="out-list">
-          <li class="out-item">
-            <span class="d">2021.04</span>
-            <div>
-              <p class="t">ロータリー米山記念奨学金</p>
-              <p class="src">ロータリー米山記念奨学会</p>
-            </div>
-          </li>
-        </ul>
-        <div class="pills" style="margin-top:20px">
-          <span class="pill dom">越境労働市場</span>
-          <span class="pill dom">国際社会学</span>
-          <span class="pill dom">移民研究</span>
-          <span class="pill dom">在日中国人 IT 派遣労働者</span>
-          <span class="pill dom">メディア・コミュニケーション</span>
-        </div>
-        <div class="out-more">
-          <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener">全業績を researchmap で見る ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ══════════ 03 EXPERIENCE (mid) ══════════ -->
   <section class="block mid tint" id="experience">
     <div class="wrap">
       <div class="sec-head rv" data-pet="walk">
         <span class="cd">➜ <b>~/experience</b></span>
-        <span class="num">03</span>
+        <span class="num">02</span>
         <h2>Experience</h2>
         <span class="jp">経歴</span>
       </div>
@@ -879,7 +705,7 @@
           <img class="tl-logo" src="logo-sojitz.png" alt="Sojitz Tech-Innovation" loading="lazy" />
           <div>
             <h3>Sojitz Tech-Innovation Co., Ltd.</h3>
-            <p class="role">AI Cloud Solution Engineer</p>
+            <p class="role">AI Cloud Solution Engineer · クラウドソリューション事業本部</p>
             <p class="date">2025.4.1 – 2026.8.31</p>
             <p>Azure を中心に、生成 AI・AI エージェントの要件整理から設計、実装、デモ、本番導入、運用までを一貫して担当。</p>
             <ul class="tl-list">
@@ -900,7 +726,6 @@
             <h3>The University of Tokyo</h3>
             <p class="role">Ph.D. Program · Graduate School of Interdisciplinary Information Studies</p>
             <p class="date">2025.4 – Present</p>
-            <p class="tag">Research: Migrant Labor Market / Migration Brokerage</p>
           </div>
         </div>
         <div class="tl-item">
@@ -909,7 +734,6 @@
             <h3>The University of Tokyo</h3>
             <p class="role">Master's Program · Graduate School of Interdisciplinary Information Studies</p>
             <p class="date">2023.4 – 2025.3</p>
-            <p class="tag">Research: Sociology / Labor Studies / Social Inequality</p>
           </div>
         </div>
         <div class="tl-item">
@@ -918,9 +742,9 @@
             <h3>Saitama University</h3>
             <p class="role">Master's Program · Graduate School of Humanities and Social Sciences</p>
             <p class="date">2020.4 – 2022.3</p>
-            <p class="tag">Research: Cross-Border Labour Markets / Migration Brokerage</p>
           </div>
         </div>
+        <nav class="cmd tl-cmd" aria-label="Research"><a href="research/">研究業績・研究テーマへ</a></nav>
       </div>
     </div>
   </section>
@@ -930,7 +754,7 @@
     <div class="wrap">
       <div class="sec-head rv" data-pet="wave">
         <span class="cd">➜ <b>~/profile</b></span>
-        <span class="num">04</span>
+        <span class="num">03</span>
         <h2>Profile Notes</h2>
         <span class="jp">スキル・資格・その他</span>
       </div>
@@ -949,9 +773,6 @@
             <span class="pill"><span class="iconify" data-icon="logos:typescript-icon"></span>TypeScript</span>
             <span class="pill"><span class="iconify" data-icon="logos:nextjs-icon"></span>Next.js</span>
             <span class="pill"><span class="iconify" data-icon="logos:python"></span>Python</span>
-            <span class="pill dom">社会学</span>
-            <span class="pill dom">労働研究</span>
-            <span class="pill dom">メディア研究</span>
           </div>
         </div>
 
@@ -1020,7 +841,7 @@
   <footer>
     <span><span id="year"></span> · BU Xinzhe（ぼく しんてつ）</span>
     <span>
-      <a href="https://researchmap.jp/buxinzhe" target="_blank" rel="noopener">researchmap</a> ·
+      <a href="research/">Research</a> ·
       <a href="https://zenn.dev/snboku" target="_blank" rel="noopener">Zenn</a>
     </span>
     <span>Built on GitHub Pages</span>
